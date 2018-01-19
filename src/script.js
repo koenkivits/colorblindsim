@@ -53,9 +53,6 @@ function render(image) {
     // Upload the image into the texture.
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
-    // lookup uniforms
-    const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
-
     // Tell WebGL how to convert from clip space to pixels
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
@@ -83,6 +80,7 @@ function render(image) {
     );
 
     // set the resolution
+    const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
     gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);
 
     // Draw the rectangle.
