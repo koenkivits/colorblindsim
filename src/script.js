@@ -3,6 +3,7 @@ img.onload = function() {
     render(img);
 }
 
+// x,y: coordinates, m: slope, yi: y-intercept
 const blinder = {
     protan: {
         x: 0.7465,

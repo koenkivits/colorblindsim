@@ -9,36 +9,8 @@ uniform bool u_anomalize;
 // the texCoords passed in from the vertex shader.
 varying vec2 v_texCoord;
 
-// xy: coordinates, m: slope, yi: y-intercept
-/*var blinder = {
-    protan: {
-        x: 0.7465,
-        y: 0.2535,
-        m: 1.273463,
-        yi: -0.073894
-    },
-    deutan: {
-        x: 1.4,
-        y: -0.4,
-        m: 0.968437,
-        yi: 0.003331
-    },
-    tritan: {
-        x: 0.1748,
-        y: 0,
-        m: 0.062921,
-        yi: 0.292119
-    },
-    custom: {
-        x: 0.735,
-        y: 0.265,
-        m: -1.059259,
-        yi: 1.026914
-    }
-};*/
-
 vec3 convertRgbToXyz(vec3 o) {
-	vec3 z = o; // / 255.0;
+	vec3 z = o;
     
 	mat3 matrixRgbXyz = mat3(
 	    0.41242371206635076, 0.3575793401363035, 0.1804662232369621,
@@ -46,7 +18,6 @@ vec3 convertRgbToXyz(vec3 o) {
 		0.019331987577444885, 0.11919267420354762, 0.9504491124870351
 	);
 	
-	// TODO check color profile === 'sRGB'
 	z.r = z.r > 0.04045 ? pow(((z.r + 0.055) / 1.055), 2.4) : z.r / 12.92;
 	z.g = z.g > 0.04045 ? pow(((z.g + 0.055) / 1.055), 2.4) : z.g / 12.92;
 	z.b = z.b > 0.04045 ? pow(((z.b + 0.055) / 1.055), 2.4) : z.b / 12.92;
@@ -59,7 +30,6 @@ vec3 convertXyzToXyY(vec3 o) {
     if (n == 0.0) {
 		// prevent division by zero
 		return vec3(0, 0, o.y);
-        //return {x: 0, y: 0, Y: o.Y};
     }
 
 	return vec3(o.x / n, o.y / n, o.y);
@@ -75,28 +45,8 @@ void main() {
 	vec4 rgba = texture2D(u_image, v_texCoord).rgba;
 	vec3 rgb = rgba.rgb;
 
-	// TODO switching type
 	// TODO achroma
 
-    /*vec4 line = vec4(
-		// protan:
-		0.7465,
-		0.2535,
-		1.273462,
-		-0.073894
-
-		// deutan:
-		1.4,
-		-0.4,
-		0.968437,
-		0.003331
-		
-		// tritan:
-        0.1748, // x
-        0.0, // y
-        0.062921, // m
-        0.292119 // yi
-    );*/
     vec3 c = convertXyzToXyY(convertRgbToXyz(rgb)); // (x, y, Y)
     
 	// The confusion line is between the source color and the confusion point
@@ -140,25 +90,20 @@ void main() {
     _g = (_g > 1.0 || _g < 0.0) ? 0.0 : _g;
     _b = (_b > 1.0 || _b < 0.0) ? 0.0 : _b;
 
-	// TODO rewrite to max?
-    float adjust = _r > _g ? _r : _g;
-    if (_b > adjust) {
-        adjust = _b;
-    }
+    float adjust = max(_r, max(_g, _b));
 
-    // shift proportionally...
+	// shift proportionally...
 	z = z + adjust * d;
 
 	// apply gamma and clamp simulated color...
 	float gammaCorrection = 2.2; // TODO make param
-    z.r = /*255.0 */ (z.r <= 0.0 ? 0.0 : z.r >= 1.0 ? 1.0 : pow(z.r, 1.0 / gammaCorrection));
-    z.g = /*255.0 */ (z.g <= 0.0 ? 0.0 : z.g >= 1.0 ? 1.0 : pow(z.g, 1.0 / gammaCorrection));
-    z.b = /*255.0 */ (z.b <= 0.0 ? 0.0 : z.b >= 1.0 ? 1.0 : pow(z.b, 1.0 / gammaCorrection));
+    z.r = pow(clamp(z.r, 0.0, 1.0), 1.0 / gammaCorrection);
+    z.g = pow(clamp(z.g, 0.0, 1.0), 1.0 / gammaCorrection);
+    z.b = pow(clamp(z.b, 0.0, 1.0), 1.0 / gammaCorrection);
 
     if (u_anomalize) {
 		z = anomalize(z, rgb);
     }
 
 	gl_FragColor = vec4(z.r, z.g, z.b, rgba.a);
-	//gl_FragColor = vec4(rgb.r, rgb.g, rgb.b, rgba.a);
 }
