@@ -18,7 +18,7 @@ function render(image) {
     // setup GLSL program
     const program = gl.createProgram();
 
-    const fragmentShader = require('./shader/filter.frag').compile(gl);
+    const fragmentShader = require('./shader/colorblind.frag').compile(gl);
     const vertexShader = require('./shader/rectangle.vert').compile(gl);
 
     gl.attachShader( program, vertexShader );

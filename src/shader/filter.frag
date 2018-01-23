@@ -7,5 +7,6 @@ uniform sampler2D u_image;
 varying vec2 v_texCoord;
 
 void main() {
-    gl_FragColor = texture2D(u_image, v_texCoord).brga;
+    vec4 rgba = texture2D(u_image, v_texCoord).rgba;
+	gl_FragColor = vec4(rgba.b, rgba.r, rgba.g, rgba[3]);
 }
