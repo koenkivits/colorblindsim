@@ -3,6 +3,9 @@ precision mediump float;
 // our texture
 uniform sampler2D u_image;
 
+uniform vec4 u_blinderLine;
+uniform bool u_anomalize;
+
 // the texCoords passed in from the vertex shader.
 varying vec2 v_texCoord;
 
@@ -62,6 +65,12 @@ vec3 convertXyzToXyY(vec3 o) {
 	return vec3(o.x / n, o.y / n, o.y);
 }
 
+vec3 anomalize(vec3 z, vec3 rgb) {
+	float v = 1.75;
+	float n = v + 1.0;
+	return (v * z + rgb) / n;
+}
+
 void main() {
 	vec4 rgba = texture2D(u_image, v_texCoord).rgba;
 	vec3 rgb = rgba.rgb;
@@ -69,39 +78,36 @@ void main() {
 	// TODO switching type
 	// TODO achroma
 
-    vec4 line = vec4(
-		/*
+    /*vec4 line = vec4(
 		// protan:
 		0.7465,
 		0.2535,
 		1.273462,
 		-0.073894
-		*/
 
-		/*
 		// deutan:
 		1.4,
 		-0.4,
 		0.968437,
 		0.003331
-		*/
+		
 		// tritan:
         0.1748, // x
         0.0, // y
         0.062921, // m
         0.292119 // yi
-    );
+    );*/
     vec3 c = convertXyzToXyY(convertRgbToXyz(rgb)); // (x, y, Y)
     
 	// The confusion line is between the source color and the confusion point
-    float slope = (c.y - line.y) / (c.x - line.x);
+    float slope = (c.y - u_blinderLine.y) / (c.x - u_blinderLine.x);
     float yi = c.y - c.x * slope; // slope, and y-intercept (at x=0)
 
     // Find the change in the x and y dimensions (no Y change)
-    float dx = (line.w - yi) / (slope - line.z);
+    float dx = (u_blinderLine.w - yi) / (slope - u_blinderLine.z);
     float dy = (slope * dx) + yi;
 
-    // Find the simulated colors XYZ coords
+    // Find the simulated color's XYZ coords
 	vec3 z = vec3(
 		dx * c.z / dy,
 		c.z,
@@ -149,10 +155,8 @@ void main() {
     z.g = /*255.0 */ (z.g <= 0.0 ? 0.0 : z.g >= 1.0 ? 1.0 : pow(z.g, 1.0 / gammaCorrection));
     z.b = /*255.0 */ (z.b <= 0.0 ? 0.0 : z.b >= 1.0 ? 1.0 : pow(z.b, 1.0 / gammaCorrection));
 
-    if (/* anomalize */ false) {
-        float v = 1.75;
-        float n = v + 1.0;
-		z = (v * z + rgb) / n;
+    if (u_anomalize) {
+		z = anomalize(z, rgb);
     }
 
 	gl_FragColor = vec4(z.r, z.g, z.b, rgba.a);

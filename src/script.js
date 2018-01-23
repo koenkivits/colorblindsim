@@ -3,6 +3,58 @@ img.onload = function() {
     render(img);
 }
 
+const blinder = {
+    protan: {
+        x: 0.7465,
+        y: 0.2535,
+        m: 1.273463,
+        yi: -0.073894
+    },
+    deutan: {
+        x: 1.4,
+        y: -0.4,
+        m: 0.968437,
+        yi: 0.003331
+    },
+    tritan: {
+        x: 0.1748,
+        y: 0,
+        m: 0.062921,
+        yi: 0.292119
+    },
+};
+
+const colorVisionData = {
+	protanomaly: {
+		blinder: blinder.protan,
+		anomalize: true,
+	},
+	protanopia: {
+		blinder: blinder.protan,
+	},
+	deuteranomaly: {
+		blinder: blinder.deutan,
+		anomalize: true
+	},
+	deuteranopia: {
+		blinder: blinder.deutan,
+	},
+	tritanomaly: {
+		blinder: blinder.tritan,
+		anomalize: true
+	},
+	tritanopia: {
+		blinder: blinder.tritan,
+	},
+	achromatomaly: {
+		blinder: blinder.achroma,
+		anomalize: true
+	},
+	achromatopsia: {
+		blinder: blinder.achroma
+	},
+};
+
 function render(image) {
     // Get A WebGL context
     var canvas = document.createElement("canvas");
@@ -82,6 +134,13 @@ function render(image) {
     // set the resolution
     const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
     gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);
+
+	const data = colorVisionData.tritanopia;
+	const lineLocation = gl.getUniformLocation(program, 'u_blinderLine');
+	gl.uniform4fv(lineLocation, Object.values(data.blinder));
+
+	const anomLocation = gl.getUniformLocation(program, 'u_anomalize');
+	gl.uniform1i(anomLocation, data.anomalize || false);
 
     // Draw the rectangle.
     gl.drawArrays(
