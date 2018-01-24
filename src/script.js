@@ -1,3 +1,5 @@
+import { h } from 'preact';
+
 const img = document.querySelector("img");
 img.onload = function() {
     render(img);
