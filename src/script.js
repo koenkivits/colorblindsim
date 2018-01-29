@@ -1,10 +1,14 @@
-import { h } from 'preact';
-import Daltonizer from './daltonize/Daltonizer';
+import { h, render } from 'preact';
 
-const img = document.querySelector("img");
-img.onload = function() {
-	const dalton = new Daltonizer();
-	document.body.appendChild(dalton.getCanvas());
-	dalton.bindSource(img);
-	dalton.render();
-}
+import Daltonizer from './daltonize/Daltonizer';
+import Daltonize from './components/Daltonize';
+
+import imageUrl from './colorblind.jpg';
+
+const img = <img src={imageUrl} width="600" />;
+render(<div>
+    {img}
+    <Daltonize>
+        {img}
+    </Daltonize>
+</div>, output);
