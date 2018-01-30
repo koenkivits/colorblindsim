@@ -1,7 +1,7 @@
-import createStore from 'unistore';
+import createStore from "unistore";
 
 const store = createStore({
-    anomaly: 'tritanopia',
+  anomaly: "tritanopia",
 });
 
 export default store;
