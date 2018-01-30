@@ -78,7 +78,7 @@ export default class Daltonizer {
         gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     }
 
-    render() {
+    render(anomaly) {
         const canvas = this.canvas;
         const gl = this.gl;
         const program = this.program;
@@ -110,7 +110,7 @@ export default class Daltonizer {
         // set the resolution
         gl.uniform2f(this.resolutionLocation, gl.canvas.width, gl.canvas.height);
 
-        const data = anomalies.tritanopia;
+        const data = anomalies[anomaly];
         const lineLocation = gl.getUniformLocation(program, 'u_blinderLine');
         gl.uniform4fv(this.lineLocation, Object.values(data.blinder));
 

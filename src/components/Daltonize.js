@@ -11,14 +11,15 @@ export default class Daltonize extends Component {
     }
 
     componentDidMount() {
-        const daltonizer = this.daltonizer;
-        requestAnimationFrame(function frame() {
-            daltonizer.render();
-            requestAnimationFrame(frame);
-        });
+        const render = () => {
+            this.daltonizer.render(this.props.anomaly);
+            requestAnimationFrame(render);
+        };
+        render();
     }
 
     initOriginal(parentNode) {
+        if (!parentNode) return;
         const original = parentNode.children[0];
         original.onload = () => {
             this.daltonizer.bindSource(original);
@@ -33,15 +34,11 @@ export default class Daltonize extends Component {
         parentNode.appendChild(this.daltonizer.getCanvas());
     }
 
-    initCanvas(parentNode) {
-    }
-
-    render({ children }) {
-        return <div>
+    render({ anomaly, children, ...otherProps }) {
+        return <div {...otherProps}>
             <div ref={(div) => this.initOriginal(div)} style={{display: 'inline-block', position: 'relative'}}>
                 { children }
             </div>
-            <div ref={(div) => this.initCanvas(div)}></div>
         </div>;
     }
 }

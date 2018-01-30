@@ -13,10 +13,13 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "preact": "^8.2.7"
+    "preact": "^8.2.7",
+    "unistore": "^3.0.4"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
     "babel-preset-preact": "^1.1.0",
+    "babel-preset-stage-3": "^6.24.1",
     "parcel-bundler": "^1.5.0",
     "parcel-plugin-shaders": "file:lib/parcel-plugin-shaders"
   }
