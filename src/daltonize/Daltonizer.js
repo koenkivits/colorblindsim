@@ -42,16 +42,9 @@ export default class Daltonizer {
         const canvas = this.canvas;
         const gl = this.gl;
 
-        // simulate image scaling
+        // TODO check other forms of input?
         let width = image.naturalWidth;
         let height = image.naturalHeight;
-        if (image.getAttribute('width') && !image.getAttribute('height')) {
-            height = (image.getAttribute('width') / width) * height;
-            width = image.getAttribute('width');
-        } else if (image.getAttribute('heigh') && !image.getAttribute('width')) {
-            width = (image.getAttribute('height') / height) * width;
-            height = image.getAttribute('height');
-        }
 
         canvas.width = width;
         canvas.height = height;
