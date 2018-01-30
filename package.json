@@ -4,6 +4,7 @@
   "main": "script.js",
   "scripts": {
     "build": "parcel src/index.html",
+    "build:production": "parcel build src/index.html",
     "watch": "parcel watch src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
