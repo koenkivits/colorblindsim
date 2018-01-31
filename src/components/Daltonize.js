@@ -1,12 +1,12 @@
 import { h, Component } from "preact";
 
 import Daltonizer from "../daltonize/Daltonizer";
+import style from "./Daltonize.css";
 
 export default class Daltonize extends Component {
   constructor(props) {
     super(props);
 
-    //this.canvas = document.createElement('canvas');
     this.daltonizer = new Daltonizer();
   }
 
@@ -25,12 +25,6 @@ export default class Daltonize extends Component {
       this.daltonizer.bindSource(original);
     };
 
-    const canvas = this.daltonizer.getCanvas();
-    canvas.style.height = "100%";
-    canvas.style.width = "100%";
-    canvas.style.position = "absolute";
-    canvas.style.top = "0";
-    canvas.style.left = "0";
     parentNode.appendChild(this.daltonizer.getCanvas());
   }
 
@@ -38,6 +32,7 @@ export default class Daltonize extends Component {
     return (
       <div {...otherProps}>
         <div
+          class="daltonize-container"
           ref={div => this.initOriginal(div)}
           style={{ display: "inline-block", position: "relative" }}
         >

@@ -1,0 +1,14 @@
+.daltonize-container {
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+}
+
+.daltonize-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100%;
+}
