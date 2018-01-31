@@ -2,7 +2,7 @@ import { h, render } from "preact";
 import { Provider } from "unistore/preact";
 
 import store from "./store";
-import Application from "./components/Application";
+import Application from "./containers/Application";
 
 const node = render(
   <Provider store={store}>
