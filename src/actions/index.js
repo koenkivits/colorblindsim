@@ -6,6 +6,16 @@ export const toggleDisabled = ({ daltonizer, ...other }) => ({
   },
 });
 
+export const setAnomaly = ({ daltonizer, ...other }, anomaly) => {
+  return {
+    ...other,
+    daltonizer: {
+      ...daltonizer,
+      anomaly,
+    },
+  };
+};
+
 // TODO anomalies should not be part of actions
 // (to guarantee purity and stuff)
 const anomalies = [
@@ -17,15 +27,9 @@ const anomalies = [
   "tritanopia",
 ];
 
-export const nextAnomaly = ({ daltonizer, ...other }) => {
-  const currentIndex = anomalies.indexOf(daltonizer.anomaly);
+export const nextAnomaly = state => {
+  const currentIndex = anomalies.indexOf(state.daltonizer.anomaly);
   const nextAnomaly = anomalies[(currentIndex + 1) % anomalies.length];
 
-  return {
-    ...other,
-    daltonizer: {
-      ...daltonizer,
-      anomaly: nextAnomaly,
-    },
-  };
+  return setAnomaly(state, nextAnomaly);
 };
