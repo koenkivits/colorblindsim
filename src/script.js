@@ -2,15 +2,19 @@ import { h, render } from "preact";
 import { Provider } from "unistore/preact";
 
 import store from "./store";
-import Application from "./index";
+import Application from "./components/Application";
 
-if (module.hot) {
-  require("preact/debug");
-}
-
-render(
+const node = render(
   <Provider store={store}>
     <Application />
   </Provider>,
-  output,
+  document.body,
 );
+
+if (module.hot) {
+  require("preact/debug");
+
+  module.hot.dispose(() => {
+    node.parentNode.removeChild(node);
+  });
+}
