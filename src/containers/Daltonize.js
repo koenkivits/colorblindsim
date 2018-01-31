@@ -12,25 +12,41 @@ const anomalies = [
   "tritanopia",
 ];
 
-const mapStateToProps = ({ anomaly }) => ({
-  anomaly,
+const mapStateToProps = ({ daltonizer }) => ({
+  ...daltonizer,
 });
 
 const actions = {
-  nextAnomaly: state => {
-    const currentIndex = anomalies.indexOf(state.anomaly);
+  toggleDisabled: ({ daltonizer, ...other }) => ({
+    ...other,
+    daltonizer: {
+      ...daltonizer,
+      disabled: !daltonizer.disabled,
+    },
+  }),
+
+  nextAnomaly: ({ daltonizer, ...other }) => {
+    const currentIndex = anomalies.indexOf(daltonizer.anomaly);
     const nextAnomaly = anomalies[(currentIndex + 1) % anomalies.length];
 
     return {
-      ...state,
-      anomaly: nextAnomaly,
+      ...other,
+      daltonizer: {
+        ...daltonizer,
+        anomaly: nextAnomaly,
+      },
     };
   },
 };
 
 export default connect(mapStateToProps, actions)(
-  ({ anomaly, nextAnomaly, children, ...otherProps }) => (
-    <Daltonize anomaly={anomaly} onClick={nextAnomaly} {...otherProps}>
+  ({ anomaly, nextAnomaly, toggleDisabled, children, ...otherProps }) => (
+    <Daltonize
+      anomaly={anomaly}
+      onClick={nextAnomaly}
+      onDblclick={toggleDisabled}
+      {...otherProps}
+    >
       {children}
     </Daltonize>
   ),

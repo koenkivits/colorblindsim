@@ -15,7 +15,17 @@ export default class Daltonize extends Component {
       this.daltonizer.render(this.props.anomaly);
       requestAnimationFrame(render);
     };
+
+    this.syncCanvas(this.props);
     render();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.syncCanvas(nextProps);
+  }
+
+  syncCanvas({ disabled }) {
+    this.daltonizer.getCanvas().style.display = disabled ? "none" : "block";
   }
 
   initOriginal(parentNode) {

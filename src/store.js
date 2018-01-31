@@ -1,7 +1,10 @@
 import createStore from "unistore";
 
 const store = createStore({
-  anomaly: "tritanopia",
+  daltonizer: {
+    anomaly: "tritanopia",
+    disabled: false,
+  },
 });
 
 export default store;
