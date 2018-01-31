@@ -1,0 +1,15 @@
+.daltonize {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.daltonize-content {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+}
