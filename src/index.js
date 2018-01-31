@@ -1,7 +1,7 @@
 import { h, Component } from "preact";
 
 import Daltonize from "./containers/Daltonize";
-import imageUrl from "./colorblind.jpg";
+import imageUrl from "../assets/img/colorblind.jpg";
 
 const img = <img src={imageUrl} width="600" />;
 const Application = () => (
