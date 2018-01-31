@@ -25,7 +25,11 @@ export default class Daltonize extends Component {
       this.daltonizer.bindSource(original);
     };
 
-    parentNode.appendChild(this.daltonizer.getCanvas());
+    const canvas = this.daltonizer.getCanvas();
+    parentNode.appendChild(canvas);
+
+    const style = window.getComputedStyle(original);
+    canvas.style.objectFit = style.getPropertyValue("object-fit");
   }
 
   render({ anomaly, children, ...otherProps }) {
