@@ -1,7 +1,7 @@
 import { h, Component } from "preact";
 
-import Daltonizer from "../daltonize/Daltonizer";
-import style from "./Daltonize.css";
+import Daltonizer from "../../daltonize/Daltonizer";
+import style from "./style.css";
 
 export default class Daltonize extends Component {
   constructor(props) {
@@ -31,11 +31,7 @@ export default class Daltonize extends Component {
   render({ anomaly, children, ...otherProps }) {
     return (
       <div {...otherProps}>
-        <div
-          class="daltonize-container"
-          ref={div => this.initOriginal(div)}
-          style={{ display: "inline-block", position: "relative" }}
-        >
+        <div class="daltonize-container" ref={div => this.initOriginal(div)}>
           {children}
         </div>
       </div>

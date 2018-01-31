@@ -29,8 +29,8 @@ const actions = {
 };
 
 export default connect(mapStateToProps, actions)(
-  ({ anomaly, nextAnomaly, children }) => (
-    <Daltonize anomaly={anomaly} onClick={nextAnomaly}>
+  ({ anomaly, nextAnomaly, children, ...otherProps }) => (
+    <Daltonize anomaly={anomaly} onClick={nextAnomaly} {...otherProps}>
       {children}
     </Daltonize>
   ),
