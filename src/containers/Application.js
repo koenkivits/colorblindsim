@@ -2,11 +2,11 @@ import { h } from "preact";
 import { connect } from "unistore/preact";
 
 import Application from "../components/Application";
-import { toggleDisabled } from "../actions";
+import { toggleDisabled, setAnomaly } from "../actions";
 
 const mapStateToProps = ({ daltonizer }) => ({
   daltonizer,
 });
-const actions = { toggleDisabled };
+const actions = { toggleDisabled, setAnomaly };
 
 export default connect(mapStateToProps, actions)(Application);
