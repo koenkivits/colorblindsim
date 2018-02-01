@@ -1,10 +1,10 @@
 import { h, Component } from "preact";
 import { Eye, EyeOff } from "preact-feather";
 
-import Daltonize from "../../containers/Daltonize";
-import imageUrl from "../../../assets/img/colorblind.jpg";
+import Daltonize from "../containers/Daltonize";
+import imageUrl from "../../assets/img/colorblind.jpg";
 
-import style from "./style.css";
+import style from "./Application.css";
 
 const img = <img src={imageUrl} class="daltonize-content" width="600" />;
 class Application extends Component {
