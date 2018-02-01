@@ -8,7 +8,7 @@ import imageUrl from "../../assets/img/colorblind.jpg";
 import style from "./Application.css";
 
 class Application extends Component {
-  render({ daltonizer, toggleDisabled, setAnomaly }) {
+  render({ daltonizer, toggleDisabled, setDisabled, setAnomaly }) {
     const ToggleIcon = daltonizer.disabled ? Eye : EyeOff;
 
     return (
@@ -18,7 +18,13 @@ class Application extends Component {
         </Daltonize>
         <div style={{ position: "absolute", top: 0, left: 0 }}>
           <ToggleIcon color="white" size={48} onClick={toggleDisabled} />
-          <AnomalySelector value={daltonizer.anomaly} onChange={setAnomaly} />
+          <AnomalySelector
+            value={daltonizer.anomaly}
+            onChange={anomaly => {
+              setDisabled(false);
+              setAnomaly(anomaly);
+            }}
+          />
         </div>
       </div>
     );
