@@ -7,14 +7,15 @@ import imageUrl from "../../assets/img/colorblind.jpg";
 
 import style from "./Application.css";
 
-const img = <img src={imageUrl} class="daltonize-content" width="600" />;
 class Application extends Component {
   render({ daltonizer, toggleDisabled, setAnomaly }) {
     const ToggleIcon = daltonizer.disabled ? Eye : EyeOff;
 
     return (
       <div>
-        <Daltonize class="daltonize">{img}</Daltonize>
+        <Daltonize class="daltonize">
+          <img src={imageUrl} class="daltonize-content" width="600" />
+        </Daltonize>
         <div style={{ position: "absolute", top: 0, left: 0 }}>
           <ToggleIcon color="white" size={48} onClick={toggleDisabled} />
           <AnomalySelector value={daltonizer.anomaly} onChange={setAnomaly} />
