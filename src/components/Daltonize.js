@@ -31,7 +31,10 @@ export default class Daltonize extends Component {
   initOriginal(parentNode) {
     if (!parentNode) return;
     const original = parentNode.children[0];
-    original.onload = () => {
+
+    // TODO use addEventListener instead
+    // TODO vary on input type
+    original.onload = original.onloadedmetadata = () => {
       this.daltonizer.bindSource(original);
     };
 

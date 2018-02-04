@@ -27,9 +27,9 @@ export default class Webcam extends Component {
   initStream() {
     if (this.video && this.stream) {
       this.video.srcObject = this.stream;
-      this.video.onloadedmetadata = e => {
+      this.video.addEventListener("loadedmetadata", e => {
         this.video.play();
-      };
+      });
     }
   }
 
