@@ -35,14 +35,14 @@ export default class Daltonize extends Component {
     // TODO use addEventListener instead
     // TODO vary on input type
     original.onload = original.onloadedmetadata = () => {
+      const style = window.getComputedStyle(original);
+      canvas.style.objectFit = style.getPropertyValue("object-fit");
+
       this.daltonizer.bindSource(original);
     };
 
     const canvas = this.daltonizer.getCanvas();
     parentNode.appendChild(canvas);
-
-    const style = window.getComputedStyle(original);
-    canvas.style.objectFit = style.getPropertyValue("object-fit");
   }
 
   render({ anomaly, children, ...otherProps }) {
