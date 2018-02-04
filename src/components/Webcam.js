@@ -33,7 +33,7 @@ export default class Webcam extends Component {
     }
   }
 
-  render() {
-    return <video ref={el => this.initVideo(el)} />;
+  render({ facingMode, ...otherProps }) {
+    return <video {...otherProps} ref={el => this.initVideo(el)} />;
   }
 }

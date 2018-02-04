@@ -16,7 +16,7 @@ class Application extends Component {
       <div>
         <Daltonize class="daltonize">
           {/*<img src={imageUrl} class="daltonize-content" width="600" />*/}
-          <Webcam />
+          <Webcam class="daltonize-content" />
         </Daltonize>
         <div style={{ position: "absolute", top: 0, left: 0 }}>
           <ToggleIcon color="white" size={48} onClick={toggleDisabled} />
