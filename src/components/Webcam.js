@@ -13,9 +13,7 @@ export default class Webcam extends Component {
       },
     };
 
-    console.log(constraints);
-    window.navigator.mediaDevices.getUserMedia(constraints).then(() => {
-      console.log("YOLO");
+    window.navigator.mediaDevices.getUserMedia(constraints).then(stream => {
       this.stream = stream;
       this.initStream();
     });
