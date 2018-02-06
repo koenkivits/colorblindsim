@@ -6,6 +6,9 @@ const initialState = {
     anomaly: "tritanopia",
     disabled: false,
   },
+  webcam: {
+    facingMode: "environment",
+  },
 };
 
 let store = createStore(initialState);

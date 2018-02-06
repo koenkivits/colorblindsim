@@ -18,3 +18,11 @@ export const setAnomaly = ({ daltonizer, ...other }, anomaly) => {
     },
   };
 };
+
+export const toggleFacingMode = ({ webcam, ...other }) => ({
+  ...other,
+  webcam: {
+    ...webcam,
+    facingMode: webcam.facingMode === "user" ? "environment" : "user",
+  },
+});

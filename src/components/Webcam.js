@@ -6,7 +6,15 @@ export default class Webcam extends Component {
   }
 
   componentWillMount() {
-    const { facingMode = "environment" } = this.props;
+    this.initFacingMode(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.initFacingMode(nextProps);
+  }
+
+  initFacingMode(props) {
+    const { facingMode = "environment" } = props;
     const constraints = {
       video: {
         facingMode,

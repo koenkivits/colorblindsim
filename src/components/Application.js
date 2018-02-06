@@ -3,23 +3,35 @@ import { Eye, EyeOff } from "preact-feather";
 
 import Daltonize from "../containers/Daltonize";
 import Webcam from "./Webcam";
+import FacingModeToggle from "./FacingModeToggle";
 import AnomalySelector from "./AnomalySelector";
 import imageUrl from "../../assets/img/colorblind.jpg";
 
 import style from "./Application.css";
 
 class Application extends Component {
-  render({ daltonizer, toggleDisabled, setDisabled, setAnomaly }) {
+  render({
+    daltonizer,
+    webcam,
+    toggleDisabled,
+    setDisabled,
+    setAnomaly,
+    toggleFacingMode,
+  }) {
     const ToggleIcon = daltonizer.disabled ? Eye : EyeOff;
 
     return (
       <div>
         <Daltonize class="daltonize">
           {/*<img src={imageUrl} class="daltonize-content" width="600" />*/}
-          <Webcam class="daltonize-content" />
+          <Webcam class="daltonize-content" facingMode={webcam.facingMode} />
         </Daltonize>
         <div style={{ position: "absolute", top: 0, left: 0 }}>
           <ToggleIcon color="white" size={48} onClick={toggleDisabled} />
+          <FacingModeToggle
+            facingMode={webcam.facingMode}
+            toggleFacingMode={toggleFacingMode}
+          />
           <AnomalySelector
             value={daltonizer.anomaly}
             onChange={anomaly => {

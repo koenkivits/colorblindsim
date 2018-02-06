@@ -1,0 +1,10 @@
+.facing-mode-toggle {
+  border: none;
+  background: none;
+
+  transition: transform 0.3s ease-out;
+}
+
+.facing-mode-toggle-user {
+  transform: rotate(180deg);
+}
