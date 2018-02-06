@@ -19,10 +19,14 @@ class Application extends Component {
     toggleFacingMode,
   }) {
     const ToggleIcon = daltonizer.disabled ? Eye : EyeOff;
+    let daltonizerClass = "daltonize";
+    if (webcam && webcam.facingMode === "user") {
+      daltonizerClass += " flip-x";
+    }
 
     return (
       <div>
-        <Daltonize class="daltonize">
+        <Daltonize class={daltonizerClass}>
           {/*<img src={imageUrl} class="daltonize-content" width="600" />*/}
           <Webcam class="daltonize-content" facingMode={webcam.facingMode} />
         </Daltonize>

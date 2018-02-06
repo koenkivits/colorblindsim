@@ -9,6 +9,10 @@
   overflow: hidden;
 }
 
+.flip-x {
+  transform: scaleX(-1);
+}
+
 /* TODO: fix this styling (maybe make container redundant) */
 .daltonize-container {
   width: 100%;
