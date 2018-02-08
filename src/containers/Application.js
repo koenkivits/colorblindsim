@@ -7,12 +7,21 @@ import {
   toggleDisabled,
   setAnomaly,
   toggleFacingMode,
+  setFacingMode,
+  supportFacingMode,
 } from "../actions";
 
 const mapStateToProps = ({ daltonizer, webcam }) => ({
   daltonizer,
   webcam,
 });
-const actions = { setDisabled, toggleDisabled, setAnomaly, toggleFacingMode };
+const actions = {
+  setDisabled,
+  toggleDisabled,
+  setAnomaly,
+  toggleFacingMode,
+  setFacingMode,
+  supportFacingMode,
+};
 
 export default connect(mapStateToProps, actions)(Application);

@@ -23,6 +23,7 @@
     "unistore": "^3.0.4"
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-preact": "^1.1.0",
     "babel-preset-stage-3": "^6.24.1",
