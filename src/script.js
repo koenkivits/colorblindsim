@@ -9,12 +9,9 @@ const node = render(
     <Application />
   </Provider>,
   document.body,
+  document.querySelector("output"),
 );
 
 if (module.hot) {
   require("preact/debug");
-
-  module.hot.dispose(() => {
-    node.parentNode.removeChild(node);
-  });
 }
