@@ -3,6 +3,8 @@ import { h, Component } from "preact";
 export default class Webcam extends Component {
   constructor(props) {
     super(props);
+
+    this.streams = {};
   }
 
   componentWillMount() {
@@ -19,9 +21,19 @@ export default class Webcam extends Component {
       return;
     }
 
+    // Memoize streams to make sure Firefox for Android doesn't keep popping up the
+    // permission dialog
+    const encoded = JSON.stringify(constraints);
+    if (this.streams[encoded]) {
+      this.stream = this.streams[encoded];
+      this.initStream();
+      return;
+    }
+
     window.navigator.mediaDevices
       .getUserMedia({ video: constraints })
       .then(stream => {
+        this.streams[encoded] = stream;
         this.stream = stream;
         this.initStream();
       })
