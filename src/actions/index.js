@@ -19,10 +19,47 @@ export const setAnomaly = ({ daltonizer, ...other }, anomaly) => {
   };
 };
 
-export const toggleFacingMode = ({ webcam, ...other }) => ({
+export const setFacingMode = ({ webcam, ...other }, facingMode) => ({
   ...other,
   webcam: {
     ...webcam,
-    facingMode: webcam.facingMode === "user" ? "environment" : "user",
+    facingMode,
+  },
+});
+
+export const toggleFacingMode = state => {
+  const newMode = state.webcam.facingMode === "user" ? "environment" : "user";
+  let result = setFacingMode(state, newMode);
+  return setCameraConstraints(result, {
+    facingMode: {
+      exact: newMode,
+    },
+  });
+};
+
+export const setCameraConstraints = ({ webcam, ...other }, constraints) => ({
+  ...other,
+  webcam: {
+    ...webcam,
+    constraints,
+  },
+});
+
+export const receiveCameras = ({ cameras, ...other }, list) => ({
+  ...other,
+  cameras: {
+    ...cameras,
+    list,
+  },
+});
+
+export const setFrontBackSupport = (
+  { cameras, ...other },
+  frontBackSupport,
+) => ({
+  ...other,
+  cameras: {
+    ...cameras,
+    frontBackSupport,
   },
 });

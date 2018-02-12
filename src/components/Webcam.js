@@ -6,25 +6,38 @@ export default class Webcam extends Component {
   }
 
   componentWillMount() {
-    this.initFacingMode(this.props);
+    this.initConstraints(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.initFacingMode(nextProps);
+    this.initConstraints(nextProps);
   }
 
-  initFacingMode(props) {
-    const { facingMode = "environment" } = props;
-    const constraints = {
-      video: {
-        facingMode,
-      },
-    };
+  initConstraints(props) {
+    const { constraints } = props;
+    if (!constraints) {
+      return;
+    }
 
-    window.navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-      this.stream = stream;
-      this.initStream();
-    });
+    window.navigator.mediaDevices
+      .getUserMedia({ video: constraints })
+      .then(stream => {
+        this.stream = stream;
+        this.initStream();
+      })
+      .catch(e => {
+        switch (e.name) {
+          case "OverconstrainedError":
+            this.onOverconstrained(e);
+            break;
+          case "NotAllowedError":
+            this.onNotAllowed(e);
+            break;
+          default:
+            this.onError(e);
+            break;
+        }
+      });
   }
 
   initVideo(el) {

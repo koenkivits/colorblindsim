@@ -9,6 +9,10 @@ const initialState = {
   webcam: {
     facingMode: "environment",
   },
+  cameras: {
+    frontBackSupport: false,
+    list: [],
+  },
 };
 
 let store = createStore(initialState);
