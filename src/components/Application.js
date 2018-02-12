@@ -83,6 +83,7 @@ class Application extends Component {
               toggleFacingMode={toggleFacingMode}
             />
           )}
+          {/*TODO show mirror icon when front/back not supported?*/}
           <AnomalySelector
             value={daltonizer.anomaly}
             onChange={anomaly => {
