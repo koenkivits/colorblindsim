@@ -19,30 +19,10 @@ export const setAnomaly = ({ daltonizer, ...other }, anomaly) => {
   };
 };
 
-export const setFacingMode = ({ webcam, ...other }, facingMode) => ({
+export const toggleFacingMode = ({ webcam, ...other }) => ({
   ...other,
   webcam: {
     ...webcam,
-    facingMode,
+    facingMode: webcam.facingMode === "user" ? "environment" : "user",
   },
 });
-
-export const toggleFacingMode = state =>
-  setFacingMode(
-    state,
-    state.webcam.facingMode === "user" ? "environment" : "user",
-  );
-
-export const supportFacingMode = ({ webcam, ...other }, facingMode) => {
-  const { supported, ...camOther } = webcam;
-  return {
-    ...other,
-    webcam: {
-      ...camOther,
-      supported: {
-        ...camOther,
-        [facingMode]: true,
-      },
-    },
-  };
-};

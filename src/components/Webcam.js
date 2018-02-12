@@ -3,12 +3,6 @@ import { h, Component } from "preact";
 export default class Webcam extends Component {
   constructor(props) {
     super(props);
-
-    this.stream = null;
-    this.streams = {
-      user: null,
-      environment: null,
-    };
   }
 
   componentWillMount() {
@@ -21,43 +15,16 @@ export default class Webcam extends Component {
 
   initFacingMode(props) {
     const { facingMode = "environment" } = props;
-    const cachedStream = this.streams[facingMode];
-    if (cachedStream) {
-      return this.setStream(cachedStream);
-    }
-
     const constraints = {
       video: {
-        facingMode: {
-          exact: facingMode,
-        },
+        facingMode,
       },
     };
 
-    window.navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then(stream => {
-        this.streams[facingMode] = stream;
-        this.setStream(stream);
-        this.props.onSuccess(facingMode);
-      })
-      .catch(e => {
-        switch (e.name) {
-          case "OverconstrainedError":
-            // TODO: this appears to be different in Chrome
-            // (ugh)
-            this.props.onOverconstrained(facingMode);
-            break;
-          default:
-            this.props.onError(e);
-            break;
-        }
-      });
-  }
-
-  setStream(stream) {
-    this.stream = stream;
-    this.initStream();
+    window.navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+      this.stream = stream;
+      this.initStream();
+    });
   }
 
   initVideo(el) {

@@ -8,10 +8,6 @@ const initialState = {
   },
   webcam: {
     facingMode: "environment",
-    supported: {
-      environment: false,
-      user: false,
-    },
   },
 };
 
