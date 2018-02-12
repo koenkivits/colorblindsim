@@ -43,9 +43,9 @@ export default class Webcam extends Component {
       })
       .catch(e => {
         switch (e.name) {
-          case "ConstraintNotSatisfiedError":
-          /* falls through */
           case "OverconstrainedError":
+            // TODO: this appears to be different in Chrome
+            // (ugh)
             this.props.onOverconstrained(facingMode);
             break;
           default:
