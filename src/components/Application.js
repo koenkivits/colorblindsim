@@ -42,7 +42,6 @@ class Application extends Component {
         },
       });
       this.props.setFacingMode("user"); // assume regular webcam
-      //this.props.setFrontBackSupport(true);
     } else {
       this.props.setCameraConstraints({
         facingMode: {
@@ -62,6 +61,9 @@ class Application extends Component {
     setDisabled,
     setAnomaly,
     toggleFacingMode,
+    setFrontBackSupport,
+    setCameraConstraints,
+    setFacingMode,
   }) {
     const ToggleIcon = daltonizer.disabled ? Eye : EyeOff;
     let daltonizerClass = "daltonize";
@@ -73,7 +75,15 @@ class Application extends Component {
       <div>
         <Daltonize class={daltonizerClass}>
           {/*<img src={imageUrl} class="daltonize-content" width="600" />*/}
-          <Webcam class="daltonize-content" constraints={webcam.constraints} />
+          <Webcam
+            class="daltonize-content"
+            constraints={webcam.constraints}
+            onOverconstrained={e => {
+              setFrontBackSupport(false);
+              setFacingMode("environment");
+              setCameraConstraints(true);
+            }}
+          />
         </Daltonize>
         <div style={{ position: "absolute", top: 0, left: 0 }}>
           <ToggleIcon color="white" size={48} onClick={toggleDisabled} />

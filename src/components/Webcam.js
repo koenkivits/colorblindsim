@@ -39,14 +39,16 @@ export default class Webcam extends Component {
       })
       .catch(e => {
         switch (e.name) {
+          case "ConstraintNotSatisfiedError":
+          /* Chrome specific error, falls through */
           case "OverconstrainedError":
-            this.onOverconstrained(e);
+            this.props.onOverconstrained && this.props.onOverconstrained(e);
             break;
           case "NotAllowedError":
-            this.onNotAllowed(e);
+            this.props.onNotAllowed && this.props.onNotAllowed(e);
             break;
           default:
-            this.onError(e);
+            this.props.onError && this.props.onError(e);
             break;
         }
       });
