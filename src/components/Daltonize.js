@@ -19,6 +19,10 @@ export default class Daltonize extends Component {
     render();
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.children[0] !== this.props.children[0];
+  }
+
   initOriginal(parentNode) {
     if (!parentNode) return;
     const original = parentNode.children[0];
