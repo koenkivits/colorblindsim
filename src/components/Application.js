@@ -1,8 +1,8 @@
 import { h, Component } from "preact";
-import { Eye, EyeOff } from "preact-feather";
 
 import Daltonize from "../containers/Daltonize";
 import Webcam from "./Webcam";
+import DisabledToggle from "./DisabledToggle";
 import FacingModeToggle from "./FacingModeToggle";
 import AnomalySelector from "./AnomalySelector";
 
@@ -64,7 +64,6 @@ class Application extends Component {
     setCameraConstraints,
     setFacingMode,
   }) {
-    const ToggleIcon = daltonizer.disabled ? Eye : EyeOff;
     let daltonizerClass = "daltonize";
     if (webcam && webcam.facingMode === "user") {
       daltonizerClass += " flip-x";
@@ -84,7 +83,10 @@ class Application extends Component {
           />
         </Daltonize>
         <div style={{ position: "absolute", top: 0, left: 0 }}>
-          <ToggleIcon color="white" size={48} onClick={toggleDisabled} />
+          <DisabledToggle
+            disabled={daltonizer.disabled}
+            onClick={toggleDisabled}
+          />
           {cameras.frontBackSupport && (
             <FacingModeToggle
               facingMode={webcam.facingMode}

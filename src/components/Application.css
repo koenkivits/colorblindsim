@@ -25,3 +25,13 @@
   height: 100%;
   object-fit: contain;
 }
+
+/* TODO: decently split up styling */
+.visually-hidden {
+  display: none;
+}
+
+button {
+  border: none;
+  background: none;
+}
