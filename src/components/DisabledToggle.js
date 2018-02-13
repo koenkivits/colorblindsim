@@ -3,12 +3,13 @@ import { Eye, EyeOff } from "preact-feather";
 
 const DisabledToggle = ({ disabled, ...otherProps }) => {
   const Icon = disabled ? Eye : EyeOff;
+  const label = disabled ? "Enable" : "Disable";
 
   return (
-    <button {...otherProps}>
-      <span class="visually-hidden">{disabled ? "Enable" : "Disable"}</span>
+    <button title={label} {...otherProps}>
+      <span class="visually-hidden">{label}</span>
       <span aria-hidden="true">
-        <Icon color="white" size="48" />
+        <Icon color="black" size="48" />
       </span>
     </button>
   );

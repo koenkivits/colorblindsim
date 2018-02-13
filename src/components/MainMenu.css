@@ -1,0 +1,31 @@
+.main-menu {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 1em;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.main-menu-items {
+  display: flex;
+  width: 100%;
+  max-width: 60vw;
+  justify-content: space-around;
+}
+
+.main-menu button {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+}
+
+.main-menu button:focus {
+  outline: none; /* TODO: I know this is bad for a11y. Need to fix */
+}

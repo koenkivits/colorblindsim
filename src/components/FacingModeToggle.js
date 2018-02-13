@@ -9,7 +9,7 @@ export default class FacingModeToggle extends Component {
 
     return (
       <button class={classNames} onClick={toggleFacingMode}>
-        <RefreshCw color="white" size={48} />
+        <RefreshCw color="black" size={48} />
       </button>
     );
   }

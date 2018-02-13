@@ -2,6 +2,7 @@ import { h, Component } from "preact";
 
 import Daltonize from "../containers/Daltonize";
 import Webcam from "./Webcam";
+import MainMenu from "./MainMenu";
 import DisabledToggle from "./DisabledToggle";
 import FacingModeToggle from "./FacingModeToggle";
 import AnomalySelector from "./AnomalySelector";
@@ -82,7 +83,7 @@ class Application extends Component {
             }}
           />
         </Daltonize>
-        <div style={{ position: "absolute", top: 0, left: 0 }}>
+        <MainMenu>
           <DisabledToggle
             disabled={daltonizer.disabled}
             onClick={toggleDisabled}
@@ -93,6 +94,8 @@ class Application extends Component {
               toggleFacingMode={toggleFacingMode}
             />
           )}
+        </MainMenu>
+        <div style={{ position: "absolute", top: 0, left: 0 }}>
           {/*TODO show mirror icon when front/back not supported?*/}
           <AnomalySelector
             value={daltonizer.anomaly}
