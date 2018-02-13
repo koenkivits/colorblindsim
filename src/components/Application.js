@@ -5,7 +5,6 @@ import Daltonize from "../containers/Daltonize";
 import Webcam from "./Webcam";
 import FacingModeToggle from "./FacingModeToggle";
 import AnomalySelector from "./AnomalySelector";
-import imageUrl from "../../assets/img/colorblind.jpg";
 
 import style from "./Application.css";
 
@@ -74,7 +73,6 @@ class Application extends Component {
     return (
       <div>
         <Daltonize class={daltonizerClass}>
-          {/*<img src={imageUrl} class="daltonize-content" width="600" />*/}
           <Webcam
             class="daltonize-content"
             constraints={webcam.constraints}
