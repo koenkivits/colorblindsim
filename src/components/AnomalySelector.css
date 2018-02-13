@@ -2,6 +2,7 @@
   position: absolute;
   top: 2em;
   left: 2em;
+  max-height: 80vh;
 
   color: white;
   font-size: 1.5em;
@@ -31,6 +32,12 @@
   will-change: background-color;
   background-color: #fff;
   transition: background-color ease-in 0.2s;
+}
+
+.anomaly-values small {
+  display: block;
+  font-size: 70%;
+  color: #c0c0c0;
 }
 
 .anomaly-values label:hover {
