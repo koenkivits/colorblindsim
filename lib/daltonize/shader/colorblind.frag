@@ -6,6 +6,7 @@ uniform sampler2D u_image;
 uniform vec4 u_blinderLine;
 uniform bool u_anomalize;
 uniform bool u_achroma;
+uniform bool u_enabled;
 
 // the texCoords passed in from the vertex shader.
 varying vec2 v_texCoord;
@@ -111,15 +112,16 @@ void main() {
   vec3 rgb = rgba.rgb;
   vec3 z = rgb;
 
-  if (u_achroma) {
-    z = applyAchroma(rgb);
-  } else {
-    z = applyBlinder(rgb);
-  }
-  // TODO achroma
+  if (u_enabled) {
+    if (u_achroma) {
+      z = applyAchroma(rgb);
+    } else {
+      z = applyBlinder(rgb);
+    }
 
-  if (u_anomalize) {
-    z = anomalize(z, rgb);
+    if (u_anomalize) {
+      z = anomalize(z, rgb);
+    }
   }
 
   gl_FragColor = vec4(z.r, z.g, z.b, rgba.a);
