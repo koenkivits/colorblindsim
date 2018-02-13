@@ -8,7 +8,6 @@ const formatStats = stats => {
     return "very rare";
   }
 
-  // TODO also long descriptions (for title)
   let result = `${stats[0]}% of males`;
   if (!stats[1]) {
     return result;
