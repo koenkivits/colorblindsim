@@ -95,16 +95,13 @@ class Application extends Component {
             />
           )}
         </MainMenu>
-        <div style={{ position: "absolute", top: 0, left: 0 }}>
-          {/*TODO show mirror icon when front/back not supported?*/}
-          <AnomalySelector
-            value={daltonizer.anomaly}
-            onChange={anomaly => {
-              setDisabled(false);
-              setAnomaly(anomaly);
-            }}
-          />
-        </div>
+        <AnomalySelector
+          value={daltonizer.anomaly}
+          onChange={anomaly => {
+            setDisabled(false);
+            setAnomaly(anomaly);
+          }}
+        />
       </div>
     );
   }

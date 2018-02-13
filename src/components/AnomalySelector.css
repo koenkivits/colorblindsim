@@ -1,0 +1,62 @@
+.anomaly-selector {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+
+  transition: background-color ease-in-out 0.1s, color ease-in-out 0.1s;
+}
+
+.anomaly-selector.expanded {
+  background-color: #fff;
+  color: black;
+}
+
+.anomaly-values {
+  display: none;
+}
+
+.expanded .anomaly-values {
+  display: block;
+}
+
+.anomaly-values label {
+  display: block;
+  padding: 0.5em;
+  cursor: pointer;
+
+  will-change: background-color;
+  background-color: #fff;
+  transition: background-color ease-in 0.2s;
+}
+
+.anomaly-values label:hover {
+  background-color: #e6e6e6;
+}
+
+.anomaly-values label.selected {
+  background-color: #e4f0f5;
+}
+
+.anomaly-values input {
+  display: none;
+}
+
+.current-anomaly {
+  display: block;
+  padding: 0.5em;
+}
+
+.current-anomaly::after {
+  content: "▾";
+  display: inline-block;
+  transition: transform ease-in-out 0.2s;
+  padding: 0 0.2em;
+}
+
+.expanded .current-anomaly::after {
+  transform: rotate(180deg);
+}
