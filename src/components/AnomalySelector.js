@@ -49,7 +49,7 @@ export default class AnomalySelector extends Component {
     return (
       <div class={"anomaly-selector" + (expanded ? " expanded" : "")}>
         <span class="current-anomaly" onClick={toggle}>
-          {value}
+          {colorVisionData[value].name}
         </span>
         <div class="anomaly-values">
           {anomalies.map(anomaly => (
