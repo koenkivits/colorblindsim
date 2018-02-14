@@ -71,7 +71,7 @@ class Application extends Component {
     }
 
     return (
-      <div>
+      <div class="daltonize-ui">
         <Daltonize class={daltonizerClass}>
           <Webcam
             class="daltonize-content"
