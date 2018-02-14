@@ -3,13 +3,24 @@
   top: 2em;
   left: 2em;
 
-  color: black;
   font-size: 1.5em;
   cursor: pointer;
 }
 
-.anomaly-values {
+.anomaly-selector > * {
+  min-width: 220px;
+
+  will-change: color background-color transform;
+  color: white;
+  transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
+}
+
+.anomaly-selector.expanded > * {
   background-color: white;
+  color: black;
+}
+
+.anomaly-values {
   transform: translateY(-1px) scaleY(0);
   transform-origin: top;
   transition: transform ease-out 0.2s;
@@ -57,9 +68,6 @@
 .current-anomaly {
   display: block;
   padding: 0.5em;
-  color: white;
-
-  transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
 }
 
 .current-anomaly::after {
@@ -67,11 +75,6 @@
   display: inline-block;
   transition: transform ease-in-out 0.2s;
   padding: 0 0.2em;
-}
-
-.expanded .current-anomaly {
-  color: black;
-  background-color: white;
 }
 
 .expanded .current-anomaly::after {
