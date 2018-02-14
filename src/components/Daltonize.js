@@ -34,6 +34,13 @@ export default class Daltonize extends Component {
       canvas.style.objectFit = style.getPropertyValue("object-fit");
 
       this.daltonizer.bindSource(original);
+      window.addEventListener("resize", () => {
+        // TODO: debounce?
+        // this is mainly aimed at mobile, to detect orientation changes. Chrome seems to
+        // fire orientationchange events to early, before camera has been recalibrated or
+        // something
+        this.daltonizer.bindSource(original);
+      });
     };
 
     const canvas = this.daltonizer.getCanvas();

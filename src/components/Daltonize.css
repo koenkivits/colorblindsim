@@ -4,6 +4,10 @@
   font-size: 0;
 }
 
+.daltonize-container :not(canvas) {
+  visibility: hidden;
+}
+
 .daltonize-container canvas {
   position: absolute;
   top: 0;
