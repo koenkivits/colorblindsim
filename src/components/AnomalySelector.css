@@ -12,7 +12,8 @@
 
   will-change: color background-color transform;
   color: white;
-  transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
+  transition: transform ease-out 0.2s, color ease-in-out 0.2s,
+    background-color ease-in-out 0.2s;
 }
 
 .anomaly-selector.expanded > * {
@@ -21,21 +22,16 @@
 }
 
 .anomaly-values {
-  transform: translateY(-1px) scaleY(0);
   transform-origin: top;
-  transition: transform ease-out 0.2s;
+  transform: scaleY(0);
   max-height: 70vh;
   overflow: auto;
-  float: left;
-  pointer-events: none;
   position: absolute;
+  margin-top: -1px;
 }
 
 .expanded .anomaly-values {
-  pointer-events: auto;
-  height: auto;
-  /*display: block;*/
-  transform: translateY(-1px) scaleY(1);
+  transform: none;
 }
 
 .anomaly-values label {
