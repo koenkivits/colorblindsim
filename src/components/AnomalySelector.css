@@ -2,27 +2,29 @@
   position: absolute;
   top: 2em;
   left: 2em;
-  max-height: 80vh;
-  overflow: auto;
 
-  color: white;
+  color: black;
   font-size: 1.5em;
   cursor: pointer;
-
-  transition: background-color ease-in-out 0.1s, color ease-in-out 0.1s;
-}
-
-.anomaly-selector.expanded {
-  background-color: #fff;
-  color: black;
 }
 
 .anomaly-values {
-  display: none;
+  background-color: white;
+  transform: translateY(-1px) scaleY(0);
+  transform-origin: top;
+  transition: transform ease-out 0.2s;
+  max-height: 70vh;
+  overflow: auto;
+  float: left;
+  pointer-events: none;
+  position: absolute;
 }
 
 .expanded .anomaly-values {
-  display: block;
+  pointer-events: auto;
+  height: auto;
+  /*display: block;*/
+  transform: translateY(-1px) scaleY(1);
 }
 
 .anomaly-values label {
@@ -31,7 +33,6 @@
   cursor: pointer;
 
   will-change: background-color;
-  background-color: #fff;
   transition: background-color ease-in 0.2s;
 }
 
@@ -56,6 +57,9 @@
 .current-anomaly {
   display: block;
   padding: 0.5em;
+  color: white;
+
+  transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
 }
 
 .current-anomaly::after {
@@ -63,6 +67,11 @@
   display: inline-block;
   transition: transform ease-in-out 0.2s;
   padding: 0 0.2em;
+}
+
+.expanded .current-anomaly {
+  color: black;
+  background-color: white;
 }
 
 .expanded .current-anomaly::after {
