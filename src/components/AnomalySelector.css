@@ -1,7 +1,7 @@
 .anomaly-selector {
   position: absolute;
-  top: 2em;
-  left: 2em;
+  top: 1em;
+  left: 1em;
 
   font-size: 1.5em;
   cursor: pointer;
