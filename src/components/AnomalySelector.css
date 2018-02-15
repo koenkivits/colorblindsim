@@ -10,13 +10,13 @@
 .anomaly-selector > * {
   min-width: 220px;
 
-  will-change: color background-color transform;
+  will-change: color, background-color, transform;
   color: white;
   transition: transform ease-out 0.2s, color ease-in-out 0.2s,
     background-color ease-in-out 0.2s;
 }
 
-.anomaly-selector.expanded > * {
+.anomaly-selector.expanded > .current-anomaly {
   background-color: white;
   color: black;
 }
@@ -28,6 +28,8 @@
   overflow: auto;
   position: absolute;
   margin-top: -1px;
+  color: black;
+  background-color: white;
 }
 
 .expanded .anomaly-values {
