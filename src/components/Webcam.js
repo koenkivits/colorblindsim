@@ -7,7 +7,7 @@ export default class Webcam extends Component {
     this.streams = {};
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.initConstraints(this.props);
   }
 
@@ -15,11 +15,21 @@ export default class Webcam extends Component {
     this.initConstraints(nextProps);
   }
 
+  shouldComponentUpdate() {
+    return false;
+  }
+
   initConstraints(props) {
     const { constraints } = props;
     if (!constraints) {
       return;
     }
+
+    if (constraints === this.props.constraints) {
+      return;
+    }
+
+    this.props.onRequest();
 
     // Memoize streams to make sure Firefox for Android doesn't keep popping up the
     // permission dialog
@@ -55,15 +65,18 @@ export default class Webcam extends Component {
   }
 
   initVideo(el) {
-    this.video = el;
-    this.initStream();
+    if (el && this.video !== el) {
+      this.video = el;
+      this.initStream();
+    }
   }
 
   initStream() {
-    if (this.video && this.stream) {
+    if (this.video && this.stream && this.video.srcObject !== this.stream) {
       this.video.srcObject = this.stream;
       this.video.addEventListener("loadedmetadata", e => {
         this.video.play();
+        this.props.onInit();
       });
     }
   }

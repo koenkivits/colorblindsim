@@ -10,6 +10,14 @@ import AnomalySelector from "./AnomalySelector";
 import style from "./Application.css";
 
 class Application extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fetchingCamera: false,
+    };
+  }
+
   componentDidMount() {
     window.navigator.mediaDevices
       .enumerateDevices()
@@ -72,10 +80,19 @@ class Application extends Component {
 
     return (
       <div class="daltonize-ui">
-        <Daltonize class={daltonizerClass}>
+        <Daltonize
+          class={daltonizerClass}
+          style={{ visibility: this.state.fetchingCamera ? "hidden" : "" }}
+        >
           <Webcam
             class="daltonize-content"
             constraints={webcam.constraints}
+            onRequest={() => {
+              this.setState({ fetchingCamera: true });
+            }}
+            onInit={() => {
+              this.setState({ fetchingCamera: false });
+            }}
             onOverconstrained={e => {
               setFrontBackSupport(false);
               setFacingMode("environment");
