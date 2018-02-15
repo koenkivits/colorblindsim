@@ -1,0 +1,7 @@
+{
+  "name": "Color Blindness Simulator",
+  "short_name": "Color Blindness Simulator",
+  "description": "A real-time color blindness simulator app.",
+  "start_url": "/",
+  "display": "fullscreen"
+}
