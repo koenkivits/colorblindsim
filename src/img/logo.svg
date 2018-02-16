@@ -23,9 +23,9 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
+     inkscape:zoom="0.35355339"
      inkscape:cx="128.71332"
      inkscape:cy="554.18271"
      inkscape:document-units="mm"
@@ -55,12 +55,6 @@
      id="layer2"
      inkscape:label="Layer 2"
      transform="translate(0,118.53333)">
-    <circle
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.49552089;stroke-opacity:1"
-       id="path4781"
-       cx="127"
-       cy="8.46667"
-       r="126.85335" />
     <circle
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.49552089;stroke-opacity:1"
        id="path4758"
