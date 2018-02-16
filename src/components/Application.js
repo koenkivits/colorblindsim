@@ -61,28 +61,46 @@ class Application extends Component {
     }
   }
 
-  render({
-    cameras,
-    daltonizer,
-    webcam,
-    toggleDisabled,
-    setDisabled,
-    setAnomaly,
-    toggleFacingMode,
-    setFrontBackSupport,
-    setCameraConstraints,
-    setFacingMode,
-  }) {
+  render(
+    {
+      cameras,
+      daltonizer,
+      webcam,
+      toggleDisabled,
+      setDisabled,
+      setAnomaly,
+      toggleFacingMode,
+      setFrontBackSupport,
+      setCameraConstraints,
+      setFacingMode,
+    },
+    { letterbox },
+  ) {
     let daltonizerClass = "daltonize";
     if (webcam && webcam.facingMode === "user") {
       daltonizerClass += " flip-x";
     }
+    if (letterbox) {
+      daltonizerClass += " daltonize-letterbox";
+    }
+
+    // TODO cleanup
+    // cover the entire screen if we wouldn't lose too much content, letterbox otherwise
+    const onBind = video => {
+      const actualRatio = video.offsetWidth / video.offsetHeight;
+      const videoRatio = video.videoWidth / video.videoHeight;
+
+      this.setState({
+        letterbox: videoRatio / actualRatio < 0.8,
+      });
+    };
 
     return (
       <div class="daltonize-ui">
         <Daltonize
           class={daltonizerClass}
           style={{ visibility: this.state.fetchingCamera ? "hidden" : "" }}
+          onBind={onBind}
         >
           <Webcam
             class="daltonize-content"
