@@ -47,21 +47,37 @@ export default class Webcam extends Component {
         this.stream = stream;
         this.initStream();
       })
-      .catch(e => {
-        switch (e.name) {
+      .catch(err => {
+        switch (err.name) {
           case "ConstraintNotSatisfiedError":
           /* Chrome specific error, falls through */
           case "OverconstrainedError":
-            this.props.onOverconstrained && this.props.onOverconstrained(e);
+            if (this.props.onOverconstrained) {
+              this.props.onOverconstrained(err);
+            } else {
+              this.handleError(err);
+            }
             break;
           case "NotAllowedError":
-            this.props.onNotAllowed && this.props.onNotAllowed(e);
+            if (this.props.onNotAllowed) {
+              this.props.onNotAllowed(err);
+            } else {
+              this.handleError(err);
+            }
             break;
           default:
-            this.props.onError && this.props.onError(e);
+            this.handleError(err);
             break;
         }
       });
+  }
+
+  handleError(err) {
+    if (this.props.onError) {
+      this.props.onError(err);
+    } else {
+      console.error(err);
+    }
   }
 
   initVideo(el) {
