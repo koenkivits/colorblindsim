@@ -33,8 +33,10 @@ export default class Webcam extends Component {
 
     // Memoize streams to make sure Firefox for Android doesn't keep popping up the
     // permission dialog
+    // TODO: memoization is disabled for now. Firefox for Android is slightly less friendly
+    // now, but Safari for iOS is not broken anymore. Ugh.
     const encoded = JSON.stringify(constraints);
-    if (this.streams[encoded]) {
+    if (this.streams[encoded] && false) {
       this.stream = this.streams[encoded];
       this.initStream();
       return;
@@ -90,14 +92,18 @@ export default class Webcam extends Component {
   initStream() {
     if (this.video && this.stream && this.video.srcObject !== this.stream) {
       this.video.srcObject = this.stream;
-      this.video.addEventListener("loadedmetadata", e => {
-        this.video.play();
-        this.props.onInit();
-      });
+      this.video.addEventListener(
+        "loadedmetadata",
+        () => {
+          this.video.play();
+          this.props.onInit();
+        },
+        { once: true },
+      );
     }
   }
 
   render({ facingMode, ...otherProps }) {
-    return <video {...otherProps} ref={el => this.initVideo(el)} />;
+    return <video playsinline {...otherProps} ref={el => this.initVideo(el)} />;
   }
 }
