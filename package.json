@@ -5,7 +5,8 @@
   "scripts": {
     "watch": "parcel src/index.html",
     "watch:https": "parcel --https src/index.html",
-    "build": "parcel build src/index.html --detailed-report",
+    "build":
+      "parcel build --no-cache --public-url / src/index.html --detailed-report",
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
