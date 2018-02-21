@@ -25,7 +25,7 @@ h1 {
 }
 
 h1 > span {
-  margin: 0.5em;
+  margin: 0.2em;
   text-align: left;
 }
 
@@ -33,7 +33,7 @@ h1 > span {
   display: inline-block;
   height: 1.5em;
 
-  border: 0.2em solid #5373f4;
+  border: 0.1em solid #5373f4;
   border-radius: 50%;
 }
 
