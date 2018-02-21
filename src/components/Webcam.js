@@ -8,24 +8,21 @@ export default class Webcam extends Component {
   }
 
   componentDidMount() {
-    this.initConstraints(this.props);
+    this.initConstraints(this.props.constraints);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.initConstraints(nextProps);
+    if (nextProps.constraints !== this.props.constraints) {
+      this.initConstraints(nextProps.constraints);
+    }
   }
 
   shouldComponentUpdate() {
     return false;
   }
 
-  initConstraints(props) {
-    const { constraints } = props;
+  initConstraints(constraints) {
     if (!constraints) {
-      return;
-    }
-
-    if (constraints === this.props.constraints) {
       return;
     }
 

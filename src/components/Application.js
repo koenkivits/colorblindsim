@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
 
+import LameRouter from "./LameRouter";
 import Daltonize from "../containers/Daltonize";
 import Webcam from "./Webcam";
 import MainMenu from "./MainMenu";
@@ -96,48 +97,50 @@ class Application extends Component {
     };
 
     return (
-      <div class="daltonize-ui">
-        <Daltonize
-          class={daltonizerClass}
-          style={{ visibility: this.state.fetchingCamera ? "hidden" : "" }}
-          onBind={onBind}
-        >
-          <Webcam
-            class="daltonize-content"
-            constraints={webcam.constraints}
-            onRequest={() => {
-              this.setState({ fetchingCamera: true });
-            }}
-            onInit={() => {
-              this.setState({ fetchingCamera: false });
-            }}
-            onOverconstrained={e => {
-              setFrontBackSupport(false);
-              setFacingMode("environment");
-              setCameraConstraints(true);
-            }}
-          />
-        </Daltonize>
-        <MainMenu>
-          <DisabledToggle
-            disabled={daltonizer.disabled}
-            onClick={toggleDisabled}
-          />
-          {cameras.frontBackSupport && (
-            <FacingModeToggle
-              facingMode={webcam.facingMode}
-              toggleFacingMode={toggleFacingMode}
+      <LameRouter>
+        <div id="app" class="daltonize-ui">
+          <Daltonize
+            class={daltonizerClass}
+            style={{ visibility: this.state.fetchingCamera ? "hidden" : "" }}
+            onBind={onBind}
+          >
+            <Webcam
+              class="daltonize-content"
+              constraints={webcam.constraints}
+              onRequest={() => {
+                this.setState({ fetchingCamera: true });
+              }}
+              onInit={() => {
+                this.setState({ fetchingCamera: false });
+              }}
+              onOverconstrained={e => {
+                setFrontBackSupport(false);
+                setFacingMode("environment");
+                setCameraConstraints(true);
+              }}
             />
-          )}
-        </MainMenu>
-        <AnomalySelector
-          value={daltonizer.anomaly}
-          onChange={anomaly => {
-            setDisabled(false);
-            setAnomaly(anomaly);
-          }}
-        />
-      </div>
+          </Daltonize>
+          <MainMenu>
+            <DisabledToggle
+              disabled={daltonizer.disabled}
+              onClick={toggleDisabled}
+            />
+            {cameras.frontBackSupport && (
+              <FacingModeToggle
+                facingMode={webcam.facingMode}
+                toggleFacingMode={toggleFacingMode}
+              />
+            )}
+          </MainMenu>
+          <AnomalySelector
+            value={daltonizer.anomaly}
+            onChange={anomaly => {
+              setDisabled(false);
+              setAnomaly(anomaly);
+            }}
+          />
+        </div>
+      </LameRouter>
     );
   }
 }
