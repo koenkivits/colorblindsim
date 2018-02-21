@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { connect } from "unistore/preact";
 
-import Application from "../components/Application";
+import Application from "../components/Simulator";
 import {
   receiveCameras,
   setFrontBackSupport,
