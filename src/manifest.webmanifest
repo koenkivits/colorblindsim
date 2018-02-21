@@ -2,7 +2,7 @@
   "name": "Color Blindness Simulator",
   "short_name": "Color Blindness Simulator",
   "description": "A real-time color blindness simulator app.",
-  "start_url": "/",
+  "start_url": "/#app",
   "display": "standalone",
 	"lang": "en-US",
 	"icons": [
