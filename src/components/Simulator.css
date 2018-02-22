@@ -20,12 +20,6 @@
   transform: scaleX(-1);
 }
 
-/* TODO: fix this styling (maybe make container redundant) */
-.daltonize-container {
-  width: 100%;
-  height: 100%;
-}
-
 .daltonize-content {
   display: block;
   width: 100%;

@@ -4,12 +4,6 @@ import Daltonizer from "../../lib/daltonize/Daltonizer";
 import style from "./Daltonize.css";
 
 export default class Daltonize extends Component {
-  constructor(props) {
-    super(props);
-
-    this.daltonizer = new Daltonizer();
-  }
-
   componentDidMount() {
     const render = () => {
       this.daltonizer.render(this.props.anomaly, !this.props.disabled);
@@ -21,6 +15,16 @@ export default class Daltonize extends Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.children[0] !== this.props.children[0];
+  }
+
+  initCanvas(canvas) {
+    if (!canvas) {
+      return;
+    }
+
+    if (!this.daltonizer || this.daltonizer.getCanvas() !== canvas) {
+      this.daltonizer = new Daltonizer(canvas);
+    }
   }
 
   initOriginal(parentNode) {
@@ -40,24 +44,24 @@ export default class Daltonize extends Component {
         this.bindOriginal(original);
       });
     };
-
-    const canvas = this.daltonizer.getCanvas();
-    if (canvas.parentNode !== parentNode) {
-      parentNode.appendChild(canvas);
-    }
-    canvas.className = original.className;
   }
 
   bindOriginal(original) {
     const style = window.getComputedStyle(original);
-    //canvas.style.objectFit = style.getPropertyValue("object-fit");
+
     this.daltonizer.bindSource(original);
     this.props.onBind(original);
   }
 
   render({ anomaly, children, ...otherProps }) {
+    const original = children[0];
+
     return (
       <div {...otherProps}>
+        <canvas
+          {...original.attributes}
+          ref={canvas => this.initCanvas(canvas)}
+        />
         <div class="daltonize-container" ref={div => this.initOriginal(div)}>
           {children}
         </div>
