@@ -8,7 +8,7 @@ class Application extends Component {
   render() {
     return (
       <main>
-        <Introduction id="introduction" />
+        <Introduction id="splash" />
         <LameRouter>
           <Simulator id="app" />
         </LameRouter>
