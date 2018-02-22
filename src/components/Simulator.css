@@ -6,14 +6,13 @@
   right: 0;
   overflow: hidden;
   background-color: black;
+
+  display: flex;
 }
 
 .daltonize {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  height: 100%;
+  flex-grow: 1;
 }
 
 .flip-x {

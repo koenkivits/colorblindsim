@@ -98,6 +98,13 @@ class Simulator extends Component {
 
     return (
       <div {...otherProps} class="daltonize-ui">
+        <AnomalySelector
+          value={daltonizer.anomaly}
+          onChange={anomaly => {
+            setDisabled(false);
+            setAnomaly(anomaly);
+          }}
+        />
         <Daltonize
           class={daltonizerClass}
           style={{ visibility: this.state.fetchingCamera ? "hidden" : "" }}
@@ -131,13 +138,6 @@ class Simulator extends Component {
             />
           )}
         </MainMenu>
-        <AnomalySelector
-          value={daltonizer.anomaly}
-          onChange={anomaly => {
-            setDisabled(false);
-            setAnomaly(anomaly);
-          }}
-        />
       </div>
     );
   }
