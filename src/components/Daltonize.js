@@ -47,8 +47,6 @@ export default class Daltonize extends Component {
   }
 
   bindOriginal(original) {
-    const style = window.getComputedStyle(original);
-
     this.daltonizer.bindSource(original);
     this.props.onBind(original);
   }
