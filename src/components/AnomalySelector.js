@@ -47,23 +47,18 @@ export default class AnomalySelector extends Component {
 
     /* TODO a11y / semantics */
     return (
-      <div class={"anomaly-selector" + (expanded ? " expanded" : "")}>
-        <span class="current-anomaly" onClick={toggle}>
-          {colorVisionData[value].name}
-        </span>
-        <div class="anomaly-values">
-          {anomalies.map(anomaly => (
-            <AnomalyOption
-              value={anomaly}
-              anomaly={colorVisionData[anomaly]}
-              selected={anomaly === value}
-              onChange={() => {
-                onChange(anomaly);
-                toggle();
-              }}
-            />
-          ))}
-        </div>
+      <div class={"anomaly-selector"}>
+        {anomalies.map(anomaly => (
+          <AnomalyOption
+            value={anomaly}
+            anomaly={colorVisionData[anomaly]}
+            selected={anomaly === value}
+            onChange={() => {
+              onChange(anomaly);
+              toggle();
+            }}
+          />
+        ))}
       </div>
     );
   }

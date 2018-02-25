@@ -1,64 +1,45 @@
 .anomaly-selector {
-  top: 1em;
-  left: 1em;
-
+  position: relative;
   font-size: 1.5em;
   cursor: pointer;
-}
-
-.anomaly-selector > * {
-  min-width: 220px;
-
-  will-change: color, background-color, transform;
-  color: white;
-  transition: transform ease-out 0.2s, color ease-in-out 0.2s,
-    background-color ease-in-out 0.2s;
-}
-
-.anomaly-selector.expanded > .current-anomaly {
-  background-color: white;
-  color: black;
-}
-
-.anomaly-values {
-  transform-origin: top;
-  transform: scaleY(0);
-  max-height: 70vh;
-  overflow: auto;
-  position: absolute;
-  margin-top: -1px;
+  text-align: left;
+  width: 230px;
+  height: 100%;
   color: black;
   background-color: white;
+
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.expanded .anomaly-values {
-  transform: none;
-}
-
-.anomaly-values label {
+.anomaly-selector label {
+  background-color: white;
   display: block;
   padding: 0.5em;
+  padding-right: 1em;
   cursor: pointer;
 
+  transform-origin: left;
+
   will-change: background-color;
-  transition: background-color ease-in 0.2s;
+  transition: transform ease-out 0.2s;
 }
 
-.anomaly-values small {
+.anomaly-selector small {
   display: block;
   font-size: 70%;
   color: #c0c0c0;
 }
 
-.anomaly-values label:hover {
-  background-color: #e6e6e6;
+.anomaly-selector label:hover {
+  transform: scale(1.1);
 }
 
-.anomaly-values label.selected {
+.anomaly-selector label.selected {
   background-color: #e4f0f5;
 }
 
-.anomaly-values input {
+.anomaly-selector input {
   display: none;
 }
 

@@ -10,9 +10,14 @@
   display: flex;
 }
 
-.daltonize {
+.daltonize-wrapper {
+  position: relative;
   height: 100%;
   flex-grow: 1;
+}
+
+.daltonize {
+  height: 100%;
 }
 
 .flip-x {
