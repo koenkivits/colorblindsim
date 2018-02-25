@@ -42,19 +42,3 @@
 .anomaly-selector input {
   display: none;
 }
-
-.current-anomaly {
-  display: block;
-  padding: 0.5em;
-}
-
-.current-anomaly::after {
-  content: "▾";
-  display: inline-block;
-  transition: transform ease-in-out 0.2s;
-  padding: 0 0.2em;
-}
-
-.expanded .current-anomaly::after {
-  transform: rotate(180deg);
-}
