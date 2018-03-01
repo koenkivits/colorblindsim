@@ -13,10 +13,13 @@ import {
   setCameraConstraints,
 } from "../actions";
 
-const mapStateToProps = ({ daltonizer, cameras, webcam }) => ({
+import { toggleOverlay } from "../actions/overlay";
+
+const mapStateToProps = ({ daltonizer, cameras, webcam, overlay }) => ({
   daltonizer,
   cameras,
   webcam,
+  overlay,
 });
 const actions = {
   receiveCameras,
@@ -27,6 +30,7 @@ const actions = {
   toggleFacingMode,
   setFacingMode,
   setCameraConstraints,
+  toggleOverlay,
 };
 
 export default connect(mapStateToProps, actions)(Application);

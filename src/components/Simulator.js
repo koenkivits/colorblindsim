@@ -66,7 +66,9 @@ class Simulator extends Component {
       cameras,
       daltonizer,
       webcam,
+      overlay,
       toggleDisabled,
+      toggleOverlay,
       setDisabled,
       setAnomaly,
       toggleFacingMode,
@@ -85,6 +87,11 @@ class Simulator extends Component {
       daltonizerClass += " daltonize-letterbox";
     }
 
+    let wrapperClass = "daltonize-wrapper";
+    if (overlay) {
+      wrapperClass += " has-overlay";
+    }
+
     // TODO cleanup
     // cover the entire screen if we wouldn't lose too much content, letterbox otherwise
     const onBind = video => {
@@ -99,13 +106,15 @@ class Simulator extends Component {
     return (
       <div {...otherProps} class="daltonize-ui">
         <AnomalySelector
+          active={overlay === "selector"}
           value={daltonizer.anomaly}
+          toggleOverlay={toggleOverlay}
           onChange={anomaly => {
             setDisabled(false);
             setAnomaly(anomaly);
           }}
         />
-        <div class="daltonize-wrapper">
+        <div class={wrapperClass}>
           <Daltonize
             class={daltonizerClass}
             style={{ visibility: this.state.fetchingCamera ? "hidden" : "" }}

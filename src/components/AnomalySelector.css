@@ -1,8 +1,12 @@
 .anomaly-selector {
-  position: relative;
-  font-size: 1.5em;
-  cursor: pointer;
   text-align: left;
+  font-size: 1.5em;
+  height: 100%;
+}
+
+.anomaly-values {
+  position: relative;
+  cursor: pointer;
   width: 230px;
   height: 100%;
   color: black;
@@ -12,7 +16,7 @@
   overflow-y: auto;
 }
 
-.anomaly-selector label {
+.anomaly-values label {
   background-color: white;
   display: block;
   padding: 0.5em;
@@ -25,20 +29,55 @@
   transition: transform ease-out 0.2s;
 }
 
-.anomaly-selector small {
+.anomaly-values small {
   display: block;
   font-size: 70%;
   color: #c0c0c0;
 }
 
-.anomaly-selector label:hover {
+.anomaly-values label:hover {
   transform: scale(1.1);
 }
 
-.anomaly-selector label.selected {
+.anomaly-values label.selected {
   background-color: #e4f0f5;
 }
 
-.anomaly-selector input {
+.anomaly-values input {
   display: none;
+}
+
+.anomaly-toggle {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .anomaly-toggle {
+    display: block;
+  }
+
+  .anomaly-selector {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .anomaly-toggle button {
+    font-size: 20px !important;
+    color: white;
+    cursor: pointer;
+  }
+
+  .anomaly-selector * {
+    color: white !important;
+    background: none !important;
+  }
+
+  .anomaly-values {
+    transition: transform ease-out 0.2s;
+    transform: translateX(-100%);
+  }
+
+  .expanded .anomaly-values {
+    transform: none;
+  }
 }

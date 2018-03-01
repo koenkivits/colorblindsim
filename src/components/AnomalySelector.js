@@ -41,24 +41,32 @@ export default class AnomalySelector extends Component {
     };
   }
 
-  render({ value, onChange }, { expanded }) {
+  render({ value, active, toggleOverlay, onChange }, { expanded }) {
     const anomalies = Object.keys(colorVisionData);
-    const toggle = () => this.setState({ expanded: !expanded });
+    //const toggle = () => this.setState({ expanded: !expanded });
+    const toggle = () => toggleOverlay("selector");
 
     /* TODO a11y / semantics */
     return (
-      <div class={"anomaly-selector"}>
-        {anomalies.map(anomaly => (
-          <AnomalyOption
-            value={anomaly}
-            anomaly={colorVisionData[anomaly]}
-            selected={anomaly === value}
-            onChange={() => {
-              onChange(anomaly);
-              toggle();
-            }}
-          />
-        ))}
+      <div class={"anomaly-selector" + (active ? " expanded" : "")}>
+        <div class="anomaly-toggle">
+          <button class="toggle-anomaly" onClick={toggle}>
+            ☰ {/* TODO: replace with actual icon */}
+          </button>
+        </div>
+        <div class="anomaly-values">
+          {anomalies.map(anomaly => (
+            <AnomalyOption
+              value={anomaly}
+              anomaly={colorVisionData[anomaly]}
+              selected={anomaly === value}
+              onChange={() => {
+                onChange(anomaly);
+                toggle();
+              }}
+            />
+          ))}
+        </div>
       </div>
     );
   }
