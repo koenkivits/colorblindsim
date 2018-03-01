@@ -54,6 +54,7 @@
 @media (max-width: 1200px) {
   .anomaly-toggle {
     display: block;
+    padding: 1em 0 0 1em;
   }
 
   .anomaly-selector {
@@ -62,12 +63,46 @@
   }
 
   .anomaly-toggle button {
-    font-size: 20px !important;
-    color: white;
     cursor: pointer;
+
+    display: inline-block;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    outline: none; /* TODO fix when using keyboard nav */
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .anomaly-selector * {
+  .anomaly-toggle .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  }
+
+  .anomaly-toggle .expand {
+    opacity: 1;
+  }
+
+  .anomaly-toggle .back {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+
+  .expanded .anomaly-toggle .expand {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
+  .expanded .anomaly-toggle .back {
+    opacity: 1;
+    transform: none;
+  }
+
+  .anomaly-selector *:not(.toggle-anomaly) {
     color: white !important;
     background: none !important;
   }

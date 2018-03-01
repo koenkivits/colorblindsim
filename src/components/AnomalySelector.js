@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import { Menu, ArrowLeft } from "preact-feather";
 
 import colorVisionData from "../../lib/daltonize/anomalies";
 import style from "./AnomalySelector.css";
@@ -51,7 +52,12 @@ export default class AnomalySelector extends Component {
       <div class={"anomaly-selector" + (active ? " expanded" : "")}>
         <div class="anomaly-toggle">
           <button class="toggle-anomaly" onClick={toggle}>
-            ☰ {/* TODO: replace with actual icon */}
+            <span class="icon expand">
+              <Menu color="white" size={32} />
+            </span>
+            <span class="icon back">
+              <ArrowLeft color="white" size={32} />
+            </span>
           </button>
         </div>
         <div class="anomaly-values">
