@@ -54,7 +54,6 @@
 @media (max-width: 1200px) {
   .anomaly-toggle {
     display: block;
-    padding: 1em 0 0 1em;
   }
 
   .anomaly-selector {
@@ -65,20 +64,28 @@
   .anomaly-toggle button {
     cursor: pointer;
 
+    background-color: rgba(0, 0, 0, 0.5);
     display: inline-block;
     position: relative;
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
+
     padding: 0;
 
     outline: none; /* TODO fix when using keyboard nav */
     -webkit-tap-highlight-color: transparent;
+
+    transition: background-color 0.2s ease-out;
+  }
+
+  .expanded .anomaly-toggle button {
+    background: none;
   }
 
   .anomaly-toggle .icon {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 6px;
+    left: 6px;
 
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
   }
