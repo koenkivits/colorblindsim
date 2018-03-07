@@ -18,8 +18,10 @@
   transition: opacity ease-out 0.2s;
 }
 
-.has-overlay {
-  opacity: 0.5;
+@media (max-width: 1200px) {
+  .has-overlay {
+    opacity: 0.5;
+  }
 }
 
 .daltonize {
