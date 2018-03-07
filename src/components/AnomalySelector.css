@@ -2,13 +2,17 @@
   text-align: left;
   font-size: 1.5em;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .anomaly-values {
   position: relative;
+  flex-grow: 1;
+
   cursor: pointer;
   width: 230px;
-  height: 100%;
   color: black;
   background-color: white;
 
@@ -54,11 +58,17 @@
 @media (max-width: 1200px) {
   .anomaly-toggle {
     display: block;
+    pointer-events: auto;
   }
 
   .anomaly-selector {
     position: absolute;
     z-index: 1;
+    pointer-events: none;
+  }
+
+  .anomaly-selector.expanded {
+    pointer-events: auto;
   }
 
   .anomaly-toggle button {
