@@ -20,7 +20,7 @@ const formatStats = stats => {
 };
 
 const AnomalyOption = ({ value, anomaly, selected, onChange }) => (
-  <label class={selected ? "selected" : ""}>
+  <label class={selected ? "anomaly-value--selected" : ""}>
     <input
       type="radio"
       name="anomaly"
@@ -49,18 +49,23 @@ export default class AnomalySelector extends Component {
 
     /* TODO a11y / semantics */
     return (
-      <div class={"anomaly-selector" + (active ? " expanded" : "")}>
-        <div class="anomaly-toggle">
+      <div
+        class={
+          "anomaly-selector overlay-on-mobile overlay-on-mobile--left" +
+          (active ? " overlay-on-mobile--open" : "")
+        }
+      >
+        <div class="overlay-on-mobile__toggle">
           <button class="toggle-anomaly" onClick={toggle}>
-            <span class="icon expand">
+            <span class="overlay-on-mobile__toggle-icon overlay-on-mobile__toggle-icon--open">
               <Menu color="white" size={32} />
             </span>
-            <span class="icon back">
+            <span class="overlay-on-mobile__toggle-icon overlay-on-mobile__toggle-icon--close">
               <ArrowLeft color="white" size={32} />
             </span>
           </button>
         </div>
-        <div class="anomaly-values">
+        <div class="anomaly-values overlay-on-mobile__content">
           {anomalies.map(anomaly => (
             <AnomalyOption
               value={anomaly}

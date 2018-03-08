@@ -20,6 +20,8 @@
 
   overflow-x: hidden;
   overflow-y: auto;
+
+  transition: transform ease-out 0.2s;
 }
 
 .anomaly-values label {
@@ -45,7 +47,7 @@
   transform: scale(1.1);
 }
 
-.anomaly-values label.selected {
+.anomaly-value--selected {
   background-color: #e4f0f5;
 }
 
@@ -55,91 +57,4 @@
 
 .anomaly-toggle {
   display: none;
-}
-
-@media (max-width: 1200px) {
-  .anomaly-toggle {
-    display: block;
-    pointer-events: auto;
-  }
-
-  .anomaly-selector {
-    position: absolute;
-    z-index: 1;
-
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-
-    background-color: transparent;
-  }
-
-  .anomaly-selector.expanded {
-    pointer-events: auto;
-
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .anomaly-toggle button {
-    cursor: pointer;
-
-    background-color: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    position: relative;
-    width: 44px;
-    height: 44px;
-
-    padding: 0;
-
-    outline: none; /* TODO fix when using keyboard nav */
-    -webkit-tap-highlight-color: transparent;
-
-    transition: background-color 0.2s ease-out;
-  }
-
-  .expanded .anomaly-toggle button {
-    background: none;
-  }
-
-  .anomaly-toggle .icon {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-
-    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-  }
-
-  .anomaly-toggle .expand {
-    opacity: 1;
-  }
-
-  .anomaly-toggle .back {
-    opacity: 0;
-    transform: rotate(-90deg);
-  }
-
-  .expanded .anomaly-toggle .expand {
-    opacity: 0;
-    transform: rotate(90deg);
-  }
-
-  .expanded .anomaly-toggle .back {
-    opacity: 1;
-    transform: none;
-  }
-
-  .anomaly-selector *:not(.toggle-anomaly) {
-    color: white !important;
-    background: none !important;
-  }
-
-  .anomaly-values {
-    transition: transform ease-out 0.2s;
-    transform: translateX(-100%);
-    width: auto;
-  }
-
-  .expanded .anomaly-values {
-    transform: none;
-  }
 }

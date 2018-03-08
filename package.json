@@ -19,6 +19,7 @@
   "keywords": [],
   "description": "",
   "dependencies": {
+    "node-sass": "^4.7.2",
     "preact": "^8.2.7",
     "preact-feather": "^1.0.2",
     "unistore": "^3.0.4"
