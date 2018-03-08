@@ -88,9 +88,6 @@ class Simulator extends Component {
     }
 
     let wrapperClass = "daltonize-wrapper";
-    if (overlay) {
-      wrapperClass += " has-overlay";
-    }
 
     // TODO cleanup
     // cover the entire screen if we wouldn't lose too much content, letterbox otherwise
