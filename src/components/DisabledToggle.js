@@ -11,7 +11,7 @@ const DisabledToggle = ({ disabled, ...otherProps }) => {
     <button class={disabled ? "" : "disable"} title={label} {...otherProps}>
       <span class="visually-hidden">{label}</span>
       <span aria-hidden="true">
-        <Icon color={color} size="48" />
+        <Icon size="48" />
       </span>
     </button>
   );

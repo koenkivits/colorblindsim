@@ -30,6 +30,7 @@
 
 .main-menu .disable {
   background-color: #fd3b2f;
+  color: #fff;
 }
 
 .main-menu button:focus {
