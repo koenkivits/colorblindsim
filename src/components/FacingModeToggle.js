@@ -9,7 +9,7 @@ export default class FacingModeToggle extends Component {
 
     return (
       <button class={classNames} onClick={toggleFacingMode}>
-        <RefreshCw size={48} />
+        <RefreshCw stroke-width="1" size={48} />
       </button>
     );
   }
