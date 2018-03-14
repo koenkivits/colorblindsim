@@ -1,5 +1,7 @@
 import { h, Component } from "preact";
-import { Info, ArrowDown } from "preact-feather";
+
+import ArrowDown from "preact-feather/dist/icons/arrow-down";
+import Info from "preact-feather/dist/icons/info";
 
 export default class AppInfo extends Component {
   constructor(props) {

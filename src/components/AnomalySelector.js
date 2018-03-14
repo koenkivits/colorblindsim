@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
-import { Menu, ArrowDown } from "preact-feather";
+import Menu from "preact-feather/dist/icons/menu";
+import ArrowDown from "preact-feather/dist/icons/arrow-down";
 
 import colorVisionData from "../../lib/daltonize/anomalies";
 import style from "./AnomalySelector.css";

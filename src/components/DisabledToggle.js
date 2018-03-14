@@ -1,5 +1,6 @@
 import { h } from "preact";
-import { Eye, EyeOff } from "preact-feather";
+import Eye from "preact-feather/dist/icons/eye";
+import EyeOff from "preact-feather/dist/icons/eye-off";
 
 const DisabledToggle = ({ disabled, ...otherProps }) => {
   const Icon = disabled ? Eye : EyeOff;
