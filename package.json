@@ -21,7 +21,7 @@
   "dependencies": {
     "node-sass": "^4.7.2",
     "preact": "^8.2.7",
-    "preact-feather": "^1.0.2",
+    "preact-feather": "^1.0.3",
     "unistore": "^3.0.4"
   },
   "devDependencies": {
