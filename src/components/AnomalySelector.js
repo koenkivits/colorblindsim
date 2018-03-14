@@ -1,5 +1,5 @@
 import { h, Component } from "preact";
-import { Menu, ArrowLeft } from "preact-feather";
+import { Menu, ArrowDown } from "preact-feather";
 
 import colorVisionData from "../../lib/daltonize/anomalies";
 import style from "./AnomalySelector.css";
@@ -58,10 +58,10 @@ export default class AnomalySelector extends Component {
         <div class="overlay-on-mobile__toggle">
           <button class="toggle-anomaly" onClick={toggle}>
             <span class="overlay-on-mobile__toggle-icon overlay-on-mobile__toggle-icon--open">
-              <Menu color="white" size={32} />
+              <Menu size={32} />
             </span>
             <span class="overlay-on-mobile__toggle-icon overlay-on-mobile__toggle-icon--close">
-              <ArrowLeft color="white" size={32} />
+              <ArrowDown size={32} />
             </span>
           </button>
         </div>

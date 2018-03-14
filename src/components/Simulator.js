@@ -6,6 +6,7 @@ import MainMenu from "./MainMenu";
 import DisabledToggle from "./DisabledToggle";
 import FacingModeToggle from "./FacingModeToggle";
 import AnomalySelector from "./AnomalySelector";
+import AppInfo from "./AppInfo";
 
 import style from "./Simulator.css";
 
@@ -111,6 +112,7 @@ class Simulator extends Component {
             setAnomaly(anomaly);
           }}
         />
+        <AppInfo active={overlay === "info"} toggleOverlay={toggleOverlay} />
         <div class={wrapperClass}>
           <Daltonize
             class={daltonizerClass}

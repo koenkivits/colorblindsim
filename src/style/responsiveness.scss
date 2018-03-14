@@ -20,6 +20,9 @@
   }
 
   .overlay-on-mobile {
+    display: flex;
+    flex-direction: column;
+
     position: absolute;
     top: 0;
     left: 0;
@@ -30,18 +33,31 @@
     z-index: 1;
     pointer-events: none;
     background-color: transparent;
+
+    transition: background-color ease-out .2s;
   }
 
   .overlay-on-mobile--left {
+    --toggle-open-rotation: -90deg;
+    --toggle-close-rotation: 90deg;
+    --content-shift: -100%;
+  }
+
+  .overlay-on-mobile--right {
+    .overlay-on-mobile__toggle {
+      margin-left: auto;
+    }
+
     --toggle-open-rotation: 90deg;
     --toggle-close-rotation: -90deg;
-    --content-shift: -100%;
+    --content-shift: 100%;
   }
 
   // TODO right overlay
 
   .overlay-on-mobile__content {
     transform: translateX(var(--content-shift));
+    transition: transform ease-out 0.2s;
   }
 
   .overlay-on-mobile__toggle-icon {
@@ -49,6 +65,7 @@
     top: 6px;
     left: 6px;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    color: white;
   }
 
   .overlay-on-mobile__toggle-icon--open {
@@ -68,11 +85,12 @@
 
   .overlay-on-mobile__toggle-icon--close {
     opacity: 0;
-    transform: rotate(var(--toggle-close-rotation));
+    transform: none;
   }
 
   .overlay-on-mobile--open {
     pointer-events: auto;
+    z-index: 2;
     background-color: rgba(0, 0, 0, .5);
 
     .overlay-on-mobile__toggle {
@@ -90,7 +108,7 @@
 
     .overlay-on-mobile__toggle-icon--close {
       opacity: 1;
-      transform: none;
+      transform: rotate(var(--toggle-close-rotation));
     }
   }
 }
