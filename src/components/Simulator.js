@@ -135,18 +135,20 @@ class Simulator extends Component {
               }}
             />
           </Daltonize>
-          <MainMenu>
-            <DisabledToggle
-              disabled={daltonizer.disabled}
-              onClick={toggleDisabled}
-            />
-            {cameras.frontBackSupport && (
-              <FacingModeToggle
-                facingMode={webcam.facingMode}
-                toggleFacingMode={toggleFacingMode}
+          <div class="controls">
+            <MainMenu>
+              <DisabledToggle
+                disabled={daltonizer.disabled}
+                onClick={toggleDisabled}
               />
-            )}
-          </MainMenu>
+              {cameras.frontBackSupport && (
+                <FacingModeToggle
+                  facingMode={webcam.facingMode}
+                  toggleFacingMode={toggleFacingMode}
+                />
+              )}
+            </MainMenu>
+          </div>
         </div>
       </div>
     );

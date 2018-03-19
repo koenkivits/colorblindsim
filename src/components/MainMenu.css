@@ -2,11 +2,10 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  position: absolute;
-  bottom: 2em;
+  margin-top: auto;
+  margin-bottom: 2em;
   text-align: center;
   padding: 0;
-  margin: 0;
 }
 
 .main-menu-items {
