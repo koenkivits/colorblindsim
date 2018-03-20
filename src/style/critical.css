@@ -1,4 +1,5 @@
 body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-color: #fff;
 
   /* System Fonts as used by Medium and WordPress */
@@ -39,6 +40,10 @@ h1 > span {
 
 .logo img {
   height: 100%;
+}
+
+button:focus {
+  outline: none; /* TODO: fix a11y */
 }
 
 @import "./responsiveness.scss";
