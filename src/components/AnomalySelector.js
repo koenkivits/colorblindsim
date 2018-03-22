@@ -35,15 +35,39 @@ const AnomalyOption = ({ value, anomaly, selected, onChange }) => (
 );
 
 export default class AnomalySelector extends Component {
+  selector = null;
+
   constructor(props) {
     super(props);
 
     this.state = {
       expanded: false,
+      isOverlay: false,
     };
   }
 
-  render({ value, active, toggleOverlay, onChange }, { expanded }) {
+  resizeListener = () => {
+    this.setState({
+      isOverlay: window.matchMedia("(max-width: 1200px)").matches,
+    });
+  };
+
+  initSelector = selector => {
+    if (!selector) {
+      window.removeEventListener("resize", this.resizeListener);
+    }
+
+    if (!this.selector) {
+      window.addEventListener("resize", this.resizeListener);
+    }
+    this.selector = selector;
+
+    if (this.selector) {
+      this.resizeListener();
+    }
+  };
+
+  render({ value, active, toggleOverlay, onChange }, { isOverlay, expanded }) {
     const anomalies = Object.keys(colorVisionData);
     //const toggle = () => this.setState({ expanded: !expanded });
     const toggle = () => toggleOverlay("selector");
@@ -52,9 +76,11 @@ export default class AnomalySelector extends Component {
     return (
       <div
         class={
-          "anomaly-selector overlay overlay--left" +
+          "anomaly-selector overlay--left" +
+          (isOverlay ? " overlay" : "") +
           (active ? " overlay--open" : "")
         }
+        ref={this.initSelector}
       >
         <div class="overlay__toggle">
           <button class="toggle-anomaly" onClick={toggle}>
