@@ -1,3 +1,4 @@
 {
-	"presets": ["env", "stage-3", "preact"]
+	"presets": ["env", "stage-3", "preact"],
+  "plugins": ["transform-class-properties"]
 }
