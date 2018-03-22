@@ -18,21 +18,20 @@ export default class AppInfo extends Component {
     return (
       <div
         class={
-          "app-info overlay-on-mobile overlay-on-mobile--right" +
-          (active ? " overlay-on-mobile--open" : "")
+          "app-info overlay overlay--right" + (active ? " overlay--open" : "")
         }
       >
-        <div class="overlay-on-mobile__toggle">
+        <div class="overlay__toggle">
           <button onClick={toggle}>
-            <span class="overlay-on-mobile__toggle-icon overlay-on-mobile__toggle-icon--open">
+            <span class="overlay__toggle-icon overlay__toggle-icon--open">
               <Info size={32} />
             </span>
-            <span class="overlay-on-mobile__toggle-icon overlay-on-mobile__toggle-icon--close">
+            <span class="overlay__toggle-icon overlay__toggle-icon--close">
               <ArrowDown size={32} />
             </span>
           </button>
         </div>
-        <div class="overlay-on-mobile__content">
+        <div class="overlay__content">
           <h2>Color Blindness Simulator</h2>
           <p>Some very relevant info about the app.</p>
         </div>

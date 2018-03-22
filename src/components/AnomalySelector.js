@@ -52,21 +52,21 @@ export default class AnomalySelector extends Component {
     return (
       <div
         class={
-          "anomaly-selector overlay-on-mobile overlay-on-mobile--left" +
-          (active ? " overlay-on-mobile--open" : "")
+          "anomaly-selector overlay overlay--left" +
+          (active ? " overlay--open" : "")
         }
       >
-        <div class="overlay-on-mobile__toggle">
+        <div class="overlay__toggle">
           <button class="toggle-anomaly" onClick={toggle}>
-            <span class="overlay-on-mobile__toggle-icon overlay-on-mobile__toggle-icon--open">
+            <span class="overlay__toggle-icon overlay__toggle-icon--open">
               <Menu size={32} />
             </span>
-            <span class="overlay-on-mobile__toggle-icon overlay-on-mobile__toggle-icon--close">
+            <span class="overlay__toggle-icon overlay__toggle-icon--close">
               <ArrowDown size={32} />
             </span>
           </button>
         </div>
-        <div class="anomaly-values overlay-on-mobile__content">
+        <div class="anomaly-values overlay__content">
           {anomalies.map(anomaly => (
             <AnomalyOption
               value={anomaly}
