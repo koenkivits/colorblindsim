@@ -139,7 +139,9 @@ class Simulator extends Component {
           <Anomaly
             anomaly={daltonizer.disabled ? null : daltonizer.anomaly}
             className="current-anomaly"
-          />
+            onClick={() => toggleOverlay("selector")}
+          />{" "}
+          {/* TODO cursor and stuff */}
           <MainMenu>
             <DisabledToggle
               disabled={daltonizer.disabled}
