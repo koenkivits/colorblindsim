@@ -4,8 +4,9 @@ import colorVisionData from "../../lib/daltonize/anomalies";
 
 const Anomaly = ({ anomaly, ...otherProps }) => (
   <div {...otherProps}>
-    <div>{colorVisionData[anomaly].name}</div>
     <small>{colorVisionData[anomaly].description}</small>
+    <div>{colorVisionData[anomaly].name}</div>
+    <small>{colorVisionData[anomaly].stats}</small>
   </div>
 );
 
