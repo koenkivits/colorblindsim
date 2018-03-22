@@ -136,7 +136,10 @@ class Simulator extends Component {
               }}
             />
           </Daltonize>
-          <Anomaly anomaly={daltonizer.anomaly} className="current-anomaly" />
+          <Anomaly
+            anomaly={daltonizer.disabled ? null : daltonizer.anomaly}
+            className="current-anomaly"
+          />
           <MainMenu>
             <DisabledToggle
               disabled={daltonizer.disabled}
