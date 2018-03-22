@@ -5,21 +5,6 @@ import ArrowDown from "preact-feather/dist/icons/arrow-down";
 import colorVisionData from "../../lib/daltonize/anomalies";
 import style from "./AnomalySelector.css";
 
-const formatStats = stats => {
-  if (!stats) {
-    return "very rare";
-  }
-
-  let result = `${stats[0]}% of males`;
-  if (!stats[1]) {
-    return result;
-  } else if (stats[1] === true) {
-    return `${result} and females`;
-  } else {
-    return `${result}, ${stats[1]}% of females`;
-  }
-};
-
 const AnomalyOption = ({ value, anomaly, selected, onChange }) => (
   <label class={selected ? "anomaly-value--selected" : ""}>
     <input
@@ -30,7 +15,7 @@ const AnomalyOption = ({ value, anomaly, selected, onChange }) => (
       onChange={onChange}
     />
     {anomaly.name}
-    <small>{formatStats(anomaly.stats)}</small>
+    <small>{anomaly.stats}</small>
   </label>
 );
 
