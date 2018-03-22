@@ -46,3 +46,18 @@ button {
   border: none;
   background: none;
 }
+
+.current-anomaly {
+  position: absolute;
+  top: 2em;
+  width: 100%;
+  text-align: center;
+
+  color: white;
+  font-size: 2em;
+
+  small {
+    font-size: 70%;
+    opacity: 0.8;
+  }
+}

@@ -1,6 +1,7 @@
 import { h, Component } from "preact";
 
 import Daltonize from "../containers/Daltonize";
+import Anomaly from "./Anomaly";
 import Webcam from "./Webcam";
 import MainMenu from "./MainMenu";
 import DisabledToggle from "./DisabledToggle";
@@ -8,7 +9,7 @@ import FacingModeToggle from "./FacingModeToggle";
 import AnomalySelector from "./AnomalySelector";
 import AppInfo from "./AppInfo";
 
-import style from "./Simulator.css";
+import style from "./Simulator.scss";
 
 class Simulator extends Component {
   constructor(props) {
@@ -135,6 +136,7 @@ class Simulator extends Component {
               }}
             />
           </Daltonize>
+          <Anomaly anomaly={daltonizer.anomaly} className="current-anomaly" />
           <MainMenu>
             <DisabledToggle
               disabled={daltonizer.disabled}
