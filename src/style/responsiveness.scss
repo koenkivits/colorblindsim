@@ -106,9 +106,11 @@
   }
 }
 
-.has-overlay {
-  .overlay:not(.overlay--open),
-  .hide-when-overlay {
-    opacity: 0;
+@media (max-width: 1200px) {
+  .has-overlay {
+    .overlay:not(.overlay--open),
+    .hide-when-overlay {
+      opacity: 0;
+    }
   }
 }
