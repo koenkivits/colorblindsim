@@ -103,7 +103,10 @@ class Simulator extends Component {
     };
 
     return (
-      <div {...otherProps} class="daltonize-ui">
+      <div
+        {...otherProps}
+        class={`daltonize-ui ${overlay ? "has-overlay" : ""}`}
+      >
         <AnomalySelector
           active={overlay === "selector"}
           value={daltonizer.anomaly}
@@ -138,7 +141,7 @@ class Simulator extends Component {
           </Daltonize>
           <Anomaly
             anomaly={daltonizer.disabled ? null : daltonizer.anomaly}
-            className="current-anomaly"
+            className="current-anomaly hide-when-overlay"
             onClick={() => toggleOverlay("selector")}
           />{" "}
           {/* TODO cursor and stuff */}

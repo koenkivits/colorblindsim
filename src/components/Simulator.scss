@@ -56,6 +56,8 @@ button {
   color: white;
   font-size: 2em;
 
+  transition: opacity ease-out .2s;
+
   small {
     font-size: 60%;
     opacity: 0.9;

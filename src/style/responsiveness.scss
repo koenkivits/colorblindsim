@@ -17,7 +17,7 @@
   pointer-events: none;
   background-color: transparent;
 
-  transition: background-color ease-out .2s;
+  transition: background-color ease-out .2s, opacity ease-out .2s;
 
   &.overlay--left {
     --toggle-open-rotation: -90deg;
@@ -103,5 +103,12 @@
       opacity: 1;
       transform: rotate(var(--toggle-close-rotation));
     }
+  }
+}
+
+.has-overlay {
+  .overlay:not(.overlay--open),
+  .hide-when-overlay {
+    opacity: 0;
   }
 }
