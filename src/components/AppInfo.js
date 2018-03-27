@@ -3,7 +3,7 @@ import { h, Component } from "preact";
 import ArrowDown from "preact-feather/dist/icons/arrow-down";
 import Info from "preact-feather/dist/icons/info";
 
-import "./AppInfo.css";
+import "./AppInfo.scss";
 
 export default class AppInfo extends Component {
   constructor(props) {
@@ -35,7 +35,19 @@ export default class AppInfo extends Component {
         </div>
         <div class="overlay__content">
           <h2>Color Blindness Simulator</h2>
-          <p>Some very relevant info about the app.</p>
+          <p>
+            Made with care by{" "}
+            <a href="https://koen.kivits.com" rel="noopener">
+              Koen Kivits
+            </a>. You can find me on{" "}
+            <a href="https://twitter.com/koenkivits">Twitter</a> or{" "}
+            <a href="https://github.com/koenkivits">Github</a>. Please don't
+            hesitate to contact me if you find any issues.
+          </p>
+          <p>
+            This application is open source. You can find the source on{" "}
+            <a href="https://github.com/koenkivits/colorblindsim">Github</a>.
+          </p>
         </div>
       </div>
     );
