@@ -83,7 +83,7 @@
   &.overlay--open {
     pointer-events: auto;
     z-index: 2;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: var(--overlay-background);
 
     .overlay__toggle {
       background: none;
@@ -108,6 +108,7 @@
 @media (max-width: 1200px) {
   .overlay {
     width: 100%;
+    --overlay-background: rgba(0, 0, 0, 0.5);
   }
   
   .has-overlay {

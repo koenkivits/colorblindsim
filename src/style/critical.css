@@ -11,6 +11,7 @@ body {
   --menu-secondary-text-color: #c0c0c0;
   --menu-item-background: #fff;
   --menu-item-highlight: #e4f0f5;
+  --overlay-background: #587498;
 }
 
 main {
