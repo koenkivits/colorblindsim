@@ -3,6 +3,8 @@ import { h, Component } from "preact";
 import ArrowDown from "preact-feather/dist/icons/arrow-down";
 import Info from "preact-feather/dist/icons/info";
 
+import "./AppInfo.css";
+
 export default class AppInfo extends Component {
   constructor(props) {
     super(props);
