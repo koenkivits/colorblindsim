@@ -52,13 +52,18 @@ class Introduction extends Component {
           </span>
           <span>Color Blindness Simulator</span>
         </h1>
-        <p>Experience color blindness right from your browser.</p>
+        <p>
+          Color blindness affects approximately 1 in 20 people of the world
+          population. Experience the world as they do, right from your browser.
+        </p>
 
         {this.renderSupportMessage()}
         {supportChecked &&
           hasSupport && (
             <div>
-              <a href="#app">Get started</a>
+              <a class="get-started" href="#app">
+                Get started
+              </a>
             </div>
           )}
       </section>
