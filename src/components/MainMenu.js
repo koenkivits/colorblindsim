@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import style from "./MainMenu.css";
+import "./MainMenu.css";
 
 const MainMenu = ({ children, ...otherProps }) => (
   <div class="main-menu hide-when-overlay">

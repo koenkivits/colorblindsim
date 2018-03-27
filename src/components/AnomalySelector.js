@@ -3,7 +3,7 @@ import Menu from "preact-feather/dist/icons/menu";
 import ArrowDown from "preact-feather/dist/icons/arrow-down";
 
 import colorVisionData from "../../lib/daltonize/anomalies";
-import style from "./AnomalySelector.css";
+import "./AnomalySelector.css";
 
 const AnomalyOption = ({ value, anomaly, selected, onChange }) => (
   <label class={selected ? "anomaly-value--selected" : ""}>

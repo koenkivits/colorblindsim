@@ -9,7 +9,7 @@ import FacingModeToggle from "./FacingModeToggle";
 import AnomalySelector from "./AnomalySelector";
 import AppInfo from "./AppInfo";
 
-import style from "./Simulator.scss";
+import "./Simulator.scss";
 
 class Simulator extends Component {
   constructor(props) {
