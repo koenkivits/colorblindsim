@@ -66,6 +66,8 @@
   .overlay__toggle-icon--open {
     opacity: 1;
     transform: none;
+
+    filter: drop-shadow(var(--text-shadow));
   }
 
   .overlay__content {

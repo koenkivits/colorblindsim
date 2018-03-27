@@ -57,6 +57,7 @@ button {
   font-size: 2em;
 
   transition: opacity ease-out .2s;
+  text-shadow: var(--text-shadow);
 
   small {
     font-size: 60%;
