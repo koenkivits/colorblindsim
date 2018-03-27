@@ -13,15 +13,15 @@
 
   cursor: pointer;
   width: 230px;
-  color: black;
-  background-color: white;
+  color: var(--menu-text-color);
+  background-color: var(--menu-item-background);
 
   overflow-x: hidden;
   overflow-y: auto;
 }
 
 .anomaly-values label {
-  background-color: white;
+  background-color: var(--menu-item-background);
   display: block;
   padding: 0.5em;
   padding-right: 1em;
@@ -36,7 +36,7 @@
 .anomaly-values small {
   display: block;
   font-size: 70%;
-  color: #c0c0c0;
+  color: var(--secondary-text-color);
 }
 
 .anomaly-values label:hover {
@@ -44,7 +44,7 @@
 }
 
 .anomaly-value--selected {
-  background-color: #e4f0f5;
+  --menu-item-background: var(--menu-item-highlight);
 }
 
 .anomaly-values input {

@@ -2,6 +2,7 @@ import { h, Component } from "preact";
 
 import { isSupported, BROWSER_UNSUPPORTED, NO_CAMERA } from "../support";
 import logoUrl from "../img/logo.svg";
+import "./Introduction.css";
 
 class Introduction extends Component {
   constructor(props) {

@@ -6,6 +6,11 @@ body {
   /* https://css-tricks.com/snippets/css/system-font-stack/ */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+  --menu-text-color: black;
+  --menu-secondary-text-color: #c0c0c0;
+  --menu-item-background: #fff;
+  --menu-item-highlight: #e4f0f5;
 }
 
 main {

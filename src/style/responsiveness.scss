@@ -69,13 +69,10 @@
   }
 
   .overlay__content {
-    width: 100% !important;
-    color: white !important;
-    background-color: transparent !important;
-
-    * {
-      background-color: transparent !important;
-    }
+    --menu-text-color: #fff;
+    --menu-secondary-text-color: #fff;
+    --menu-item-background: transparent;
+    --menu-item-highlight: transparent;
   }
 
   .overlay__toggle-icon--close {
