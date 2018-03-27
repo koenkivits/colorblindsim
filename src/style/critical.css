@@ -48,6 +48,10 @@ h1 > span {
   height: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:focus {
   outline: none; /* TODO: fix a11y */
 }
