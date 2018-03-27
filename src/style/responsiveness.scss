@@ -8,9 +8,8 @@
 
   position: absolute;
   top: 0;
-  left: 0;
 
-  width: 100%;
+  width: 400px;
   height: 100%;
 
   z-index: 1;
@@ -20,12 +19,15 @@
   transition: background-color ease-out .2s, opacity ease-out .2s;
 
   &.overlay--left {
+    left: 0;
     --toggle-open-rotation: -90deg;
     --toggle-close-rotation: 90deg;
     --content-shift: -100%;
   }
 
   &.overlay--right {
+    right: 0;
+
     .overlay__toggle {
       margin-left: auto;
     }
@@ -107,6 +109,10 @@
 }
 
 @media (max-width: 1200px) {
+  .overlay {
+    width: 100%;
+  }
+  
   .has-overlay {
     .overlay:not(.overlay--open),
     .hide-when-overlay {
