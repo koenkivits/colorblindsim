@@ -15,7 +15,7 @@ const AnomalyOption = ({ value, anomaly, selected, onChange }) => (
       onChange={onChange}
     />
     {anomaly.name}
-    <small>{anomaly.stats}</small>
+    <small>{anomaly.description}</small>
   </label>
 );
 
