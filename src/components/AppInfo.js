@@ -34,7 +34,7 @@ export default class AppInfo extends Component {
           </button>
         </div>
         <div class="overlay__content">
-          <h2>Color Blindness Simulator</h2>
+          <h2>ColorBlindSim</h2>
           <p>
             Made with care by{" "}
             <a href="https://koen.kivits.com" rel="noopener">

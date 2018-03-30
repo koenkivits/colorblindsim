@@ -50,7 +50,7 @@ class Introduction extends Component {
           <span class="logo">
             <img src={logoUrl} alt="" />
           </span>
-          <span>Color Blindness Simulator</span>
+          <span>ColorBlindSim</span>
         </h1>
         <p>
           Color blindness affects approximately 1 in 20 people of the world

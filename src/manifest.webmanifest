@@ -1,6 +1,6 @@
 {
-  "name": "Color Blindness Simulator",
-  "short_name": "Color Blindness Simulator",
+  "name": "ColorBlindSim",
+  "short_name": "ColorBlindSim",
   "description": "A real-time color blindness simulator app.",
   "start_url": "/#app",
   "display": "standalone",
