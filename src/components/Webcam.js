@@ -47,6 +47,7 @@ export default class Webcam extends Component {
         this.initStream();
       })
       .catch(err => {
+        return this.props.onError(err);
         switch (err.name) {
           case "ConstraintNotSatisfiedError":
           /* Chrome specific error, falls through */

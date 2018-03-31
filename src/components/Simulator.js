@@ -17,6 +17,7 @@ class Simulator extends Component {
 
     this.state = {
       fetchingCamera: false,
+      error: null,
     };
   }
 
@@ -63,6 +64,76 @@ class Simulator extends Component {
     }
   }
 
+  onCameraError = err => {
+    if (
+      err.name === "ConstraintNotSatisfiedError" ||
+      err.name === "OverconstrainedError"
+    ) {
+      setFrontBackSupport(false);
+      setFacingMode("environment");
+      setCameraConstraints(true);
+    } else {
+      this.setState({ error: err.name }); // TODO move to Redux?
+    }
+  };
+
+  resetError = () => {
+    this.setState({
+      error: null,
+    });
+  };
+
+  maybeRenderError() {
+    const { error } = this.state;
+
+    if (!error) {
+      return null;
+    }
+
+    let title, message;
+    switch (error) {
+      case "NotAllowedError":
+        title = "Camera access denied";
+        message =
+          "Please allow camera access for ColorBlindSim to function. You don't have to worry about your privacy: this app does all processing on your device and does not send any of your material over the internet.";
+        break;
+      case "InternalError":
+        title = "Internal error";
+        message =
+          "ColorBlindSim encountered an internal error. This may be caused by another browser tab already using your device's camera.";
+        break;
+      case "NotReadableError":
+        title = "Hardware error";
+        message =
+          "ColorBlindSim encountered a hardware issue that prevented it from accessing your camera. You might need to restart your device";
+        break;
+      case "NotFoundError":
+        title = "No camera found";
+        message = "ColorBlindSim could not find a camera on your device.";
+        break;
+      case "SecurityError":
+        title = "Security error";
+        message =
+          "Your security settings prevent ColorBlindSim from accessing the camera.";
+        break;
+      default:
+        title = "Unknown error";
+        message =
+          "An unknown error occurred. You might want to try to refresh the page or restart your browser or device if this error persists.";
+        break;
+    }
+
+    return (
+      <div class="message message--error">
+        <h2 class="message__title">{title}</h2>
+        <p class="message__description">{message}</p>
+        <button class="message__retry" onClick={this.resetError}>
+          Try again
+        </button>
+      </div>
+    );
+  }
+
   render(
     {
       cameras,
@@ -79,7 +150,7 @@ class Simulator extends Component {
       setFacingMode,
       ...otherProps
     },
-    { letterbox, fetchingCamera },
+    { letterbox, fetchingCamera, error },
   ) {
     let daltonizerClass = "daltonize";
     if (webcam && webcam.facingMode === "user") {
@@ -118,27 +189,25 @@ class Simulator extends Component {
         />
         <AppInfo active={overlay === "info"} toggleOverlay={toggleOverlay} />
         <div class={wrapperClass}>
-          <Daltonize
-            class={daltonizerClass}
-            style={{ visibility: fetchingCamera ? "hidden" : "" }}
-            onBind={onBind}
-          >
-            <Webcam
-              class="daltonize-content"
-              constraints={webcam.constraints}
-              onRequest={() => {
-                this.setState({ fetchingCamera: true });
-              }}
-              onInit={() => {
-                this.setState({ fetchingCamera: false });
-              }}
-              onOverconstrained={e => {
-                setFrontBackSupport(false);
-                setFacingMode("environment");
-                setCameraConstraints(true);
-              }}
-            />
-          </Daltonize>
+          {!error && (
+            <Daltonize
+              class={daltonizerClass}
+              style={{ visibility: fetchingCamera ? "hidden" : "" }}
+              onBind={onBind}
+            >
+              <Webcam
+                class="daltonize-content"
+                constraints={webcam.constraints}
+                onRequest={() => {
+                  this.setState({ fetchingCamera: true });
+                }}
+                onInit={() => {
+                  this.setState({ fetchingCamera: false });
+                }}
+                onError={this.onCameraError}
+              />
+            </Daltonize>
+          )}
           <Anomaly
             anomaly={daltonizer.disabled ? null : daltonizer.anomaly}
             className="current-anomaly hide-when-overlay"
@@ -163,6 +232,7 @@ class Simulator extends Component {
             <h2>Getting camera access...</h2>
           </div>
         )}
+        {this.maybeRenderError()}
       </div>
     );
   }
