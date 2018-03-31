@@ -79,7 +79,7 @@ class Simulator extends Component {
       setFacingMode,
       ...otherProps
     },
-    { letterbox },
+    { letterbox, fetchingCamera },
   ) {
     let daltonizerClass = "daltonize";
     if (webcam && webcam.facingMode === "user") {
@@ -120,7 +120,7 @@ class Simulator extends Component {
         <div class={wrapperClass}>
           <Daltonize
             class={daltonizerClass}
-            style={{ visibility: this.state.fetchingCamera ? "hidden" : "" }}
+            style={{ visibility: fetchingCamera ? "hidden" : "" }}
             onBind={onBind}
           >
             <Webcam
@@ -158,6 +158,11 @@ class Simulator extends Component {
             )}
           </MainMenu>
         </div>
+        {fetchingCamera && (
+          <div class="message">
+            <h2>Getting camera access...</h2>
+          </div>
+        )}
       </div>
     );
   }
