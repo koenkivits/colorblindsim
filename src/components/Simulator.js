@@ -95,7 +95,7 @@ class Simulator extends Component {
       case "NotAllowedError":
         title = "Camera access denied";
         message =
-          "Please allow camera access for ColorBlindSim to function. You don't have to worry about your privacy: this app does all processing on your device and does not send any of your material over the internet.";
+          "Please allow camera access for ColorBlindSim to function. In most browsers you can change site permissions by clicking the padlock next to the URL. You don't have to worry about your privacy: this app does all processing on your device and does not send any of your material over the internet.";
         break;
       case "InternalError":
         title = "Internal error";
