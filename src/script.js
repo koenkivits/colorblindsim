@@ -9,7 +9,7 @@ const node = render(
     <Application />
   </Provider>,
   document.body,
-  document.querySelector("output"),
+  document.querySelector("main"),
 );
 
 if (module.hot) {

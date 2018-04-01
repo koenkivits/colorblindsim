@@ -6,7 +6,7 @@
     "watch": "parcel src/index.html",
     "watch:https": "parcel --https src/index.html",
     "build":
-      "parcel build --no-cache --public-url / src/index.html --detailed-report && svgo dist/*.svg && workbox generateSW",
+      "parcel build --no-cache --public-url './' src/index.html --detailed-report && svgo dist/*.svg && ./scripts/prerender.js && workbox generateSW",
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,6 +30,7 @@
     "babel-preset-preact": "^1.1.0",
     "babel-preset-stage-3": "^6.24.1",
     "husky": "^0.14.3",
+    "jsdom": "^11.6.2",
     "lint-staged": "^6.1.0",
     "parcel-bundler": "^1.6.2",
     "parcel-plugin-shaders": "file:lib/parcel-plugin-shaders",

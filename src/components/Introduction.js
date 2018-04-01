@@ -44,6 +44,8 @@ class Introduction extends Component {
   }
 
   render(props, { hasSupport, noSupportReason, supportChecked }) {
+    const shouldShowCompatibility = !window.inPrerender;
+
     return (
       <section {...props}>
         <h1>
@@ -57,8 +59,9 @@ class Introduction extends Component {
           population. Experience the world as they do, right from your browser.
         </p>
 
-        {this.renderSupportMessage()}
-        {supportChecked &&
+        {shouldShowCompatibility && this.renderSupportMessage()}
+        {shouldShowCompatibility &&
+          supportChecked &&
           hasSupport && (
             <div>
               <a class="get-started" href="#app">
