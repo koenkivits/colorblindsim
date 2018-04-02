@@ -78,13 +78,13 @@ button {
   align-items: center;
   justify-content: center;
 
-  background: black;
+  background: var(--main-background);
   color: white;
 }
 
-.message--error {
+/*.message--error {
   background: #ff0033;
-}
+}*/
 
 .message * {
   max-width: 50em;
