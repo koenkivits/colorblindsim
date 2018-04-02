@@ -110,7 +110,8 @@ class Simulator extends Component {
         break;
       case "NotFoundError":
         title = "No camera found";
-        message = "ColorBlindSim could not find a camera on your device.";
+        message =
+          "ColorBlindSim could not find a camera on your device. Please connect a webcam or use ColorBlindSim on a different device with a camera.";
         break;
       case "SecurityError":
         title = "Security error";

@@ -31,10 +31,10 @@ class Introduction extends Component {
       case BROWSER_UNSUPPORTED:
         message = "Unfortunately, your browser does not support this app.";
         break;
-      case NO_CAMERA:
+      /*case NO_CAMERA:
         message =
           "No cameras have been found for this device. Please connect a webcam or open this app on a device with cameras (like most smartphones)";
-        break;
+        break;*/
     }
 
     if (message) {

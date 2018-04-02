@@ -10,10 +10,10 @@ export const isSupported = () =>
       reject(BROWSER_UNSUPPORTED);
     }
 
-    window.navigator.mediaDevices
+    /*window.navigator.mediaDevices
       .enumerateDevices()
       .then(list => list.filter(device => device.kind === "videoinput"))
       .then(
         cameras => (cameras.length > 0 ? resolve(true) : reject(NO_CAMERA)),
-      );
+      );*/
   });
