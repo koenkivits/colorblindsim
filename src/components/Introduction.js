@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import VideoIcon from "preact-feather/dist/icons/video";
 
 import { isSupported, BROWSER_UNSUPPORTED, NO_CAMERA } from "../support";
 import logoUrl from "../img/logo.svg";
@@ -71,7 +72,7 @@ class Introduction extends Component {
           hasSupport && (
             <div>
               <a class="get-started" href="#app">
-                Get started
+                Get started <VideoIcon class="get-started__icon" size={24} />
               </a>
             </div>
           )}

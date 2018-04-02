@@ -68,11 +68,17 @@ button:focus {
 }
 
 .get-started {
+  display: inline-flex;
+  align-items: center;
+
   background-color: #0f3b5f;
   color: white;
   padding: 1em;
-  display: inline-block;
   text-decoration: none;
+}
+
+.get-started__icon {
+  margin-left: 0.5em;
 }
 
 @import "./responsiveness.scss";
