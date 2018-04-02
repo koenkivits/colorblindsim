@@ -10,6 +10,7 @@ export const isSupported = () =>
       reject(BROWSER_UNSUPPORTED);
     }
 
+    resolve(true);
     /*window.navigator.mediaDevices
       .enumerateDevices()
       .then(list => list.filter(device => device.kind === "videoinput"))
