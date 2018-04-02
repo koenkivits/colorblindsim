@@ -23,16 +23,14 @@ export default class AppInfo extends Component {
           "app-info overlay overlay--right" + (active ? " overlay--open" : "")
         }
       >
-        <div class="overlay__toggle">
-          <button onClick={toggle}>
-            <span class="overlay__toggle-icon overlay__toggle-icon--open">
-              <Info size={32} />
-            </span>
-            <span class="overlay__toggle-icon overlay__toggle-icon--close">
-              <ArrowDown size={32} />
-            </span>
-          </button>
-        </div>
+        <button class="overlay__toggle" onClick={toggle}>
+          <span class="overlay__toggle-icon overlay__toggle-icon--open">
+            <Info size={32} />
+          </span>
+          <span class="overlay__toggle-icon overlay__toggle-icon--close">
+            <ArrowDown size={32} />
+          </span>
+        </button>
         <div class="overlay__content">
           <h2>ColorBlindSim</h2>
           <p>

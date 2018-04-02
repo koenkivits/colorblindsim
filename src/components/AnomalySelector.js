@@ -67,16 +67,14 @@ export default class AnomalySelector extends Component {
         }
         ref={this.initSelector}
       >
-        <div class="overlay__toggle">
-          <button class="toggle-anomaly" onClick={toggle}>
-            <span class="overlay__toggle-icon overlay__toggle-icon--open">
-              <Menu size={32} />
-            </span>
-            <span class="overlay__toggle-icon overlay__toggle-icon--close">
-              <ArrowDown size={32} />
-            </span>
-          </button>
-        </div>
+        <button onClick={toggle} class="overlay__toggle toggle-anomaly">
+          <span class="overlay__toggle-icon overlay__toggle-icon--open">
+            <Menu size={32} />
+          </span>
+          <span class="overlay__toggle-icon overlay__toggle-icon--close">
+            <ArrowDown size={32} />
+          </span>
+        </button>
         <div class="anomaly-values overlay__content">
           {anomalies.map(anomaly => (
             <AnomalyOption
