@@ -215,7 +215,6 @@ class Simulator extends Component {
             className="current-anomaly hide-when-overlay"
             onClick={() => toggleOverlay("selector")}
           />{" "}
-          {/* TODO cursor and stuff */}
           <MainMenu>
             <DisabledToggle
               disabled={daltonizer.disabled}
