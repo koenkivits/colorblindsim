@@ -1,9 +1,9 @@
 import { h, Component } from "preact";
-
 import ArrowDown from "preact-feather/dist/icons/arrow-down";
 import Info from "preact-feather/dist/icons/info";
 
 import "./AppInfo.scss";
+import logoUrl from "../img/logo.svg";
 
 export default class AppInfo extends Component {
   constructor(props) {
@@ -32,6 +32,9 @@ export default class AppInfo extends Component {
           </span>
         </button>
         <div class="overlay__content">
+          <p aria-hidden>
+            <img src={logoUrl} alt="" width="100" height="100" />
+          </p>
           <h2>ColorBlindSim</h2>
           <p>
             Made with care by{" "}
