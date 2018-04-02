@@ -5,15 +5,9 @@ import ArrowDown from "preact-feather/dist/icons/arrow-down";
 import colorVisionData from "../../lib/daltonize/anomalies";
 import "./AnomalySelector.css";
 
-const AnomalyOption = ({ value, anomaly, selected, onChange }) => (
-  <label class={selected ? "anomaly-value--selected" : ""}>
-    <input
-      type="radio"
-      name="anomaly"
-      checked={selected}
-      value={value}
-      onChange={onChange}
-    />
+const AnomalyOption = ({ value, anomaly, selected, onClick }) => (
+  <label class={selected ? "anomaly-value--selected" : ""} onClick={onClick}>
+    <input type="radio" name="anomaly" checked={selected} value={value} />
     {anomaly.name}
     <small>{anomaly.description}</small>
   </label>
@@ -81,7 +75,8 @@ export default class AnomalySelector extends Component {
               value={anomaly}
               anomaly={colorVisionData[anomaly]}
               selected={anomaly === value}
-              onChange={() => {
+              onClick={e => {
+                if (e.target !== e.currentTarget) return;
                 onChange(anomaly);
                 toggle();
               }}
