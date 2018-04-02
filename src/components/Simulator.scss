@@ -37,6 +37,10 @@
   object-fit: contain;
 }
 
+.daltonize--fetching {
+  visibility: hidden;
+}
+
 /* TODO: decently split up styling */
 .visually-hidden {
   display: none;

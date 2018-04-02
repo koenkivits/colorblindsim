@@ -18,6 +18,7 @@ class Simulator extends Component {
 
     this.state = {
       fetchingCamera: false,
+      hasPermission: false,
       error: null,
     };
   }
@@ -152,7 +153,7 @@ class Simulator extends Component {
       setFacingMode,
       ...otherProps
     },
-    { letterbox, fetchingCamera, error },
+    { letterbox, fetchingCamera, error, hasPermission },
   ) {
     let daltonizerClass = "daltonize";
     if (webcam && webcam.facingMode === "user") {
@@ -160,6 +161,9 @@ class Simulator extends Component {
     }
     if (letterbox) {
       daltonizerClass += " daltonize-letterbox";
+    }
+    if (fetchingCamera) {
+      daltonizerClass += " daltonize--fetching";
     }
 
     let wrapperClass = "daltonize-wrapper";
@@ -192,11 +196,7 @@ class Simulator extends Component {
         <AppInfo active={overlay === "info"} toggleOverlay={toggleOverlay} />
         <div class={wrapperClass}>
           {!error && (
-            <Daltonize
-              class={daltonizerClass}
-              style={{ visibility: fetchingCamera ? "hidden" : "" }}
-              onBind={onBind}
-            >
+            <Daltonize class={daltonizerClass} onBind={onBind}>
               <Webcam
                 class="daltonize-content"
                 constraints={webcam.constraints}
@@ -204,7 +204,7 @@ class Simulator extends Component {
                   this.setState({ fetchingCamera: true });
                 }}
                 onInit={() => {
-                  this.setState({ fetchingCamera: false });
+                  this.setState({ fetchingCamera: false, hasPermission: true });
                 }}
                 onError={this.onCameraError}
               />
@@ -228,14 +228,15 @@ class Simulator extends Component {
             )}
           </MainMenu>
         </div>
-        {fetchingCamera && (
-          <div class="message">
-            <p>
-              <img src={logoUrl} width="100" height="100" alt="" />
-            </p>
-            <p>Getting camera access...</p>
-          </div>
-        )}
+        {!hasPermission &&
+          fetchingCamera && (
+            <div class="message">
+              <p>
+                <img src={logoUrl} width="100" height="100" alt="" />
+              </p>
+              <p>Getting camera access...</p>
+            </div>
+          )}
         {this.maybeRenderError()}
       </div>
     );
