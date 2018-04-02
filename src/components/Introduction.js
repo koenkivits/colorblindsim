@@ -58,7 +58,13 @@ class Introduction extends Component {
           Color blindness affects approximately 1 in 20 people of the world
           population. Experience the world as they do, right from your browser.
         </p>
-
+        <noscript>
+          <p>
+            ColorBlindSim requires JavaScript to be enabled in order to work.
+            Please enable JavaScript and refresh the page, or switch to a
+            browser with JavaScript enabled.
+          </p>
+        </noscript>
         {shouldShowCompatibility && this.renderSupportMessage()}
         {shouldShowCompatibility &&
           supportChecked &&
