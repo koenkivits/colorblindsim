@@ -32,7 +32,7 @@ export default class AppInfo extends Component {
           </span>
         </button>
         <div class="overlay__content">
-          <p aria-hidden>
+          <p>
             <img src={logoUrl} alt="" width="100" height="100" />
           </p>
           <h2>ColorBlindSim</h2>

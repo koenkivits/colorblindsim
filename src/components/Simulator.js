@@ -8,6 +8,7 @@ import DisabledToggle from "./DisabledToggle";
 import FacingModeToggle from "./FacingModeToggle";
 import AnomalySelector from "./AnomalySelector";
 import AppInfo from "./AppInfo";
+import logoUrl from "../img/logo.svg";
 
 import "./Simulator.scss";
 
@@ -229,7 +230,10 @@ class Simulator extends Component {
         </div>
         {fetchingCamera && (
           <div class="message">
-            <h2>Getting camera access...</h2>
+            <p>
+              <img src={logoUrl} width="100" height="100" alt="" />
+            </p>
+            <p>Getting camera access...</p>
           </div>
         )}
         {this.maybeRenderError()}
