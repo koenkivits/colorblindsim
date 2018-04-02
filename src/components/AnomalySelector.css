@@ -12,7 +12,6 @@
   flex-grow: 1;
 
   cursor: pointer;
-  width: 230px;
   color: var(--menu-text-color);
   background-color: var(--menu-item-background);
 
