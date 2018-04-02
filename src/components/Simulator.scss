@@ -80,6 +80,8 @@ button {
 
   background: var(--main-background);
   color: white;
+
+  z-index: 1;
 }
 
 /*.message--error {
