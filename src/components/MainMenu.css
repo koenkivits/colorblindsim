@@ -20,7 +20,11 @@
 
 .main-menu button {
   background-color: #fff;
-  transition: background-color ease-in-out 0.1s, transform ease-in-out 0.1s;
+  transition: background-color ease-in-out 0.2s, transform ease-in-out 0.2s;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   padding: 0;
   margin: 0;
