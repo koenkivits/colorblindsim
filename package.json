@@ -6,7 +6,8 @@
     "watch": "parcel src/index.html",
     "watch:https": "parcel --https src/index.html",
     "build":
-      "rm -rf dist && parcel build --no-cache --public-url './' src/index.html --detailed-report && svgo dist/*.svg && ./scripts/prerender.js && workbox generateSW",
+      "rm -rf dist && parcel build --no-cache --public-url './' src/index.html --detailed-report && svgo dist/*.svg && ./scripts/prerender.js && npm run config-headers && workbox generateSW",
+    "config-headers": "cp ./config/_headers dist/",
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
