@@ -6,8 +6,11 @@
     "watch": "parcel src/index.html",
     "watch:https": "parcel --https src/index.html",
     "build":
-      "rm -rf dist && parcel build --no-cache --public-url './' src/index.html --detailed-report && svgo dist/*.svg && ./scripts/prerender.js && npm run config-headers && workbox generateSW",
-    "config-headers": "cp ./config/_headers dist/",
+      "npm run cleanup && parcel build --no-cache --public-url './' src/index.html --detailed-report && npm run optimize-svgs && ./scripts/prerender.js && npm run config-headers && npm run generate-sw",
+    "cleanup": "rm -rf ./dist",
+    "optimize-svgs": "svgo ./dist/*.svg",
+    "generate-sw": "workbox generateSW ./config/workbox-config.js",
+    "config-headers": "cp ./config/_headers ./dist/",
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
