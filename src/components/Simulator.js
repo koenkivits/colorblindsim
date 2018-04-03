@@ -19,6 +19,7 @@ class Simulator extends Component {
     this.state = {
       fetchingCamera: false,
       hasPermission: false,
+      facingMode: null,
       error: null,
     };
   }
@@ -153,10 +154,10 @@ class Simulator extends Component {
       setFacingMode,
       ...otherProps
     },
-    { letterbox, fetchingCamera, error, hasPermission },
+    { letterbox, fetchingCamera, error, hasPermission, facingMode },
   ) {
     let daltonizerClass = "daltonize";
-    if (webcam && webcam.facingMode === "user") {
+    if (facingMode === "user") {
       daltonizerClass += " daltonize--mirror";
     }
     if (letterbox) {
@@ -204,7 +205,11 @@ class Simulator extends Component {
                   this.setState({ fetchingCamera: true });
                 }}
                 onInit={() => {
-                  this.setState({ fetchingCamera: false, hasPermission: true });
+                  this.setState({
+                    fetchingCamera: false,
+                    hasPermission: true,
+                    facingMode: webcam.facingMode,
+                  });
                 }}
                 onError={this.onCameraError}
               />

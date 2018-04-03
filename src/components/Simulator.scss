@@ -20,6 +20,8 @@
 
 .daltonize {
   height: 100%;
+
+  transition: opacity .2s ease-out;
 }
 
 .daltonize--mirror {
@@ -38,7 +40,7 @@
 }
 
 .daltonize--fetching {
-  visibility: hidden;
+  opacity: .5;
 }
 
 /* TODO: decently split up styling */
