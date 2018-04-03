@@ -157,10 +157,10 @@ class Simulator extends Component {
   ) {
     let daltonizerClass = "daltonize";
     if (webcam && webcam.facingMode === "user") {
-      daltonizerClass += " flip-x";
+      daltonizerClass += " daltonize--mirror";
     }
     if (letterbox) {
-      daltonizerClass += " daltonize-letterbox";
+      daltonizerClass += " daltonize--letterbox";
     }
     if (fetchingCamera) {
       daltonizerClass += " daltonize--fetching";
@@ -198,7 +198,7 @@ class Simulator extends Component {
           {!error && (
             <Daltonize class={daltonizerClass} onBind={onBind}>
               <Webcam
-                class="daltonize-content"
+                class="daltonize__content"
                 constraints={webcam.constraints}
                 onRequest={() => {
                   this.setState({ fetchingCamera: true });

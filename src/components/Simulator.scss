@@ -22,18 +22,18 @@
   height: 100%;
 }
 
-.flip-x {
+.daltonize--mirror {
   transform: scaleX(-1);
 }
 
-.daltonize-content {
+.daltonize__content {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.daltonize-letterbox .daltonize-content {
+.daltonize--letterbox .daltonize__content {
   object-fit: contain;
 }
 
@@ -87,10 +87,6 @@ button {
 
   z-index: 1;
 }
-
-/*.message--error {
-  background: #ff0033;
-}*/
 
 .message * {
   max-width: 50em;
