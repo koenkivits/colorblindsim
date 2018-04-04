@@ -12,6 +12,8 @@ ColorBlindSim requires a fairly recent browser to work. It has been tested to wo
 
 If you find any bugs please [file an issue](https://github.com/koenkivits/colorblindsim/issues/new).
 
+![](.assets/img/demo-xsmall.gif)
+
 ## Build it yourself
 
 If you want to build ColorBlindSim yourself you need to have [Node.js and npm](https://nodejs.org/en/) installed. The build steps have only been tested on Linux, though macOS should work just fine. Windows probably won't work (due to syntax being used in npm scripts), but I'm open for pull requests.
