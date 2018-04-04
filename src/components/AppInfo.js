@@ -15,14 +15,15 @@ export default class AppInfo extends Component {
     };
   }
 
-  render({ active, toggleOverlay }) {
-    const toggle = () => toggleOverlay("info");
+  render({ active, toggle }) {
+    const toggleLabel = active ? "Close info" : "Open info";
 
     return (
       <div
         class={
           "app-info overlay overlay--right" + (active ? " overlay--open" : "")
         }
+        title={toggleLabel}
       >
         <button class="overlay__toggle" onClick={toggle}>
           <span class="overlay__toggle-icon overlay__toggle-icon--open">

@@ -9,10 +9,7 @@ const DisabledToggle = ({ disabled, ...otherProps }) => {
 
   return (
     <button class={disabled ? "" : "disable"} title={label} {...otherProps}>
-      <span class="visually-hidden">{label}</span>
-      <span aria-hidden="true">
-        <Icon stroke-width="1" size="48" />
-      </span>
+      <Icon stroke-width="1" size="48" />
     </button>
   );
 };

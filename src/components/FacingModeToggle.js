@@ -25,7 +25,7 @@ export default class FacingModeToggle extends Component {
       "facing-mode-toggle" + (reversed ? " facing-mode-toggle--reversed" : "");
 
     return (
-      <button class={classNames} onClick={this.onClick}>
+      <button class={classNames} onClick={this.onClick} title="Toggle camera">
         <RefreshCw stroke-width="1" size={48} />
       </button>
     );

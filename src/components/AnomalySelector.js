@@ -53,12 +53,11 @@ export default class AnomalySelector extends Component {
     }
   };
 
-  render({ value, active, toggleOverlay, onChange }, { isOverlay, expanded }) {
+  render({ value, active, toggle, onChange }, { isOverlay, expanded }) {
     const anomalies = Object.keys(colorVisionData);
-    //const toggle = () => this.setState({ expanded: !expanded });
-    const toggle = () => toggleOverlay("selector");
 
-    /* TODO a11y / semantics */
+    const toggleLabel = active ? "Close menu" : "Open menu";
+
     return (
       <div
         class={
@@ -68,7 +67,11 @@ export default class AnomalySelector extends Component {
         }
         ref={this.initSelector}
       >
-        <button onClick={toggle} class="overlay__toggle toggle-anomaly">
+        <button
+          onClick={toggle}
+          class="overlay__toggle toggle-anomaly"
+          title={toggleLabel}
+        >
           <span class="overlay__toggle-icon overlay__toggle-icon--open">
             <Menu size={32} />
           </span>

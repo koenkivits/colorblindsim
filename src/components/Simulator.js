@@ -214,13 +214,16 @@ class Simulator extends Component {
         <AnomalySelector
           active={overlay === "selector"}
           value={daltonizer.anomaly}
-          toggleOverlay={toggleOverlay}
+          toggle={() => toggleOverlay("selector")}
           onChange={anomaly => {
             setDisabled(false);
             setAnomaly(anomaly);
           }}
         />
-        <AppInfo active={overlay === "info"} toggleOverlay={toggleOverlay} />
+        <AppInfo
+          active={overlay === "info"}
+          toggle={() => toggleOverlay("info")}
+        />
         <div class={wrapperClass}>
           {!error && (
             <Daltonize class={daltonizerClass} onBind={onBind}>
