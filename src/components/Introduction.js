@@ -20,8 +20,8 @@ class Introduction extends Component {
           <span>ColorBlindSim</span>
         </h1>
         <p>
-          Color blindness affects approximately 1 in 22 people of the world
-          population. Experience the world as they do, right from your browser.
+          Color blindness affects approximately 1 in 22 people globally.
+          Experience the world as they do, right from your browser.
         </p>
         <noscript>
           <p>
