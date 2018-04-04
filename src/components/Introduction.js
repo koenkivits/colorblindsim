@@ -77,7 +77,8 @@ class Introduction extends Component {
               href="https://github.com/koenkivits/colorblindsim"
             >
               code on Github
-            </a>{" "}
+            </a>
+            {" — "}
             ©{" "}
             <a rel="noopener" href="https://koen.kivits.com">
               Koen Kivits
