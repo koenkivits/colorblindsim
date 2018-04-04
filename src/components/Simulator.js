@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
 
+import isSupported from "../isSupported";
 import Daltonize from "../containers/Daltonize";
 import Deficiency from "./Deficiency";
 import Webcam from "./Webcam";
@@ -182,6 +183,12 @@ class Simulator extends Component {
     },
     { letterbox, fetchingCamera, error, hasPermission, facingMode },
   ) {
+    if (!isSupported()) {
+      // don't render anything when someone with an unsupported browser follows a link to the
+      // app
+      return null;
+    }
+
     let daltonizerClass = "daltonize";
     if (facingMode === "user") {
       daltonizerClass += " daltonize--mirror";
