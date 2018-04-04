@@ -19,14 +19,6 @@ export const setAnomaly = ({ daltonizer, ...other }, anomaly) => {
   };
 };
 
-export const setFacingMode = ({ webcam, ...other }, facingMode) => ({
-  ...other,
-  webcam: {
-    ...webcam,
-    facingMode,
-  },
-});
-
 export const toggleFacingMode = state => {
   const constraints = state.webcam.constraints;
   let newConstraints;

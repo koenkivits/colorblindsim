@@ -9,7 +9,6 @@ import {
   toggleDisabled,
   setAnomaly,
   toggleFacingMode,
-  setFacingMode,
   setCameraConstraints,
 } from "../actions";
 
@@ -28,7 +27,6 @@ const actions = {
   toggleDisabled,
   setAnomaly,
   toggleFacingMode,
-  setFacingMode,
   setCameraConstraints,
   toggleOverlay,
 };

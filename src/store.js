@@ -6,9 +6,7 @@ const initialState = {
     anomaly: "deuteranopia",
     disabled: false,
   },
-  webcam: {
-    facingMode: "environment",
-  },
+  webcam: {},
   cameras: {
     frontBackSupport: false,
     list: [],

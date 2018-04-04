@@ -58,14 +58,12 @@ class Simulator extends Component {
           exact: cameras[0].id,
         },
       });
-      this.props.setFacingMode("user"); // assume regular webcam
     } else {
       this.props.setCameraConstraints({
         facingMode: {
           exact: "environment",
         },
       });
-      this.props.setFacingMode("environment"); // try environment cam first
     }
 
     this.props.setFrontBackSupport(!hasOnlyOneCamera);
@@ -103,8 +101,7 @@ class Simulator extends Component {
       err.name === "OverconstrainedError"
     ) {
       setFrontBackSupport(false);
-      setFacingMode("environment");
-      setCameraConstraints(true);
+      setCameraConstraints(true); // just accept any camera
     } else {
       this.setState({ error: err.name }); // TODO move to Redux?
     }
@@ -181,7 +178,6 @@ class Simulator extends Component {
       toggleFacingMode,
       setFrontBackSupport,
       setCameraConstraints,
-      setFacingMode,
       ...otherProps
     },
     { letterbox, fetchingCamera, error, hasPermission, facingMode },
@@ -251,7 +247,7 @@ class Simulator extends Component {
             />
             {cameras.frontBackSupport && (
               <FacingModeToggle
-                facingMode={webcam.facingMode}
+                facingMode={facingMode}
                 toggleFacingMode={toggleFacingMode}
               />
             )}
