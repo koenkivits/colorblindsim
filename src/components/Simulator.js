@@ -1,12 +1,12 @@
 import { h, Component } from "preact";
 
 import Daltonize from "../containers/Daltonize";
-import Anomaly from "./Anomaly";
+import Deficiency from "./Deficiency";
 import Webcam from "./Webcam";
 import MainMenu from "./MainMenu";
 import DisabledToggle from "./DisabledToggle";
 import FacingModeToggle from "./FacingModeToggle";
-import AnomalySelector from "./AnomalySelector";
+import DeficiencySelector from "./DeficiencySelector";
 import AppInfo from "./AppInfo";
 import logoUrl from "../img/logo.svg";
 
@@ -174,7 +174,7 @@ class Simulator extends Component {
       toggleDisabled,
       toggleOverlay,
       setDisabled,
-      setAnomaly,
+      setDeficiency,
       toggleFacingMode,
       setFrontBackSupport,
       setCameraConstraints,
@@ -211,13 +211,13 @@ class Simulator extends Component {
         {...otherProps}
         class={`daltonize-ui ${overlay ? "has-overlay" : ""}`}
       >
-        <AnomalySelector
+        <DeficiencySelector
           active={overlay === "selector"}
-          value={daltonizer.anomaly}
+          value={daltonizer.deficiency}
           toggle={() => toggleOverlay("selector")}
-          onChange={anomaly => {
+          onChange={deficiency => {
             setDisabled(false);
-            setAnomaly(anomaly);
+            setDeficiency(deficiency);
           }}
         />
         <AppInfo
@@ -238,9 +238,9 @@ class Simulator extends Component {
               />
             </Daltonize>
           )}
-          <Anomaly
-            anomaly={daltonizer.disabled ? null : daltonizer.anomaly}
-            className="current-anomaly hide-when-overlay"
+          <Deficiency
+            deficiency={daltonizer.disabled ? null : daltonizer.deficiency}
+            className="current-deficiency hide-when-overlay"
             onClick={() => toggleOverlay("selector")}
           />{" "}
           <MainMenu>

@@ -9,12 +9,12 @@ export const setDisabled = ({ daltonizer, ...other }, disabled) => ({
 export const toggleDisabled = state =>
   setDisabled(state, !state.daltonizer.disabled);
 
-export const setAnomaly = ({ daltonizer, ...other }, anomaly) => {
+export const setDeficiency = ({ daltonizer, ...other }, deficiency) => {
   return {
     ...other,
     daltonizer: {
       ...daltonizer,
-      anomaly,
+      deficiency,
     },
   };
 };

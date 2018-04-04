@@ -6,7 +6,7 @@ import "./Daltonize.scss";
 export default class Daltonize extends Component {
   componentDidMount() {
     const render = () => {
-      this.daltonizer.render(this.props.anomaly, !this.props.disabled);
+      this.daltonizer.render(this.props.deficiency, !this.props.disabled);
       requestAnimationFrame(render);
     };
 
@@ -51,7 +51,7 @@ export default class Daltonize extends Component {
     this.props.onBind(original);
   }
 
-  render({ anomaly, children, ...otherProps }) {
+  render({ deficiency, children, ...otherProps }) {
     const original = children[0];
 
     return (

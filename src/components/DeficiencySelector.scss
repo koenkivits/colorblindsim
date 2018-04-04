@@ -1,4 +1,4 @@
-.anomaly-selector {
+.deficiency-selector {
   text-align: left;
   font-size: 1.5em;
   height: 100%;
@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-.anomaly-values {
+.deficiency-values {
   position: relative;
   flex-grow: 1;
 
@@ -19,7 +19,7 @@
   overflow-y: auto;
 }
 
-.anomaly-values label {
+.deficiency-values label {
   background-color: var(--menu-item-background);
   display: block;
   padding: 0.5em;
@@ -32,24 +32,24 @@
   transition: transform ease-out 0.2s;
 }
 
-.anomaly-values small {
+.deficiency-values small {
   display: block;
   font-size: 70%;
   color: var(--secondary-text-color);
 }
 
-.anomaly-values label:hover {
+.deficiency-values label:hover {
   transform: scale(1.1);
 }
 
-.anomaly-value--selected {
+.deficiency-value--selected {
   --menu-item-background: var(--menu-item-highlight);
 }
 
-.anomaly-values input {
+.deficiency-values input {
   display: none;
 }
 
-.anomaly-toggle {
+.deficiency-toggle {
   display: none;
 }

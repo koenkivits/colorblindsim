@@ -3,24 +3,24 @@ import Menu from "preact-feather/dist/icons/menu";
 import ArrowDown from "preact-feather/dist/icons/arrow-down";
 
 import colorVisionData from "../../lib/daltonize/anomalies";
-import "./AnomalySelector.scss";
+import "./DeficiencySelector.scss";
 import "../style/overlays.scss";
 
-const AnomalyOption = ({ value, anomaly, selected, onChange }) => (
-  <label class={selected ? "anomaly-value--selected" : ""}>
+const DeficiencyOption = ({ value, deficiency, selected, onChange }) => (
+  <label class={selected ? "deficiency-value--selected" : ""}>
     <input
       type="radio"
-      name="anomaly"
+      name="deficiency"
       checked={selected}
       value={value}
       onChange={onChange}
     />
-    {anomaly.name}
-    <small>{anomaly.description}</small>
+    {deficiency.name}
+    <small>{deficiency.description}</small>
   </label>
 );
 
-export default class AnomalySelector extends Component {
+export default class DeficiencySelector extends Component {
   selector = null;
 
   constructor(props) {
@@ -61,7 +61,7 @@ export default class AnomalySelector extends Component {
     return (
       <div
         class={
-          "anomaly-selector overlay--left" +
+          "deficiency-selector overlay--left" +
           (isOverlay ? " overlay" : "") +
           (active ? " overlay--open" : "")
         }
@@ -69,7 +69,7 @@ export default class AnomalySelector extends Component {
       >
         <button
           onClick={toggle}
-          class="overlay__toggle toggle-anomaly"
+          class="overlay__toggle toggle-deficiency"
           title={toggleLabel}
         >
           <span class="overlay__toggle-icon overlay__toggle-icon--open">
@@ -79,14 +79,14 @@ export default class AnomalySelector extends Component {
             <ArrowDown size={32} />
           </span>
         </button>
-        <div class="anomaly-values overlay__content">
-          {anomalies.map(anomaly => (
-            <AnomalyOption
-              value={anomaly}
-              anomaly={colorVisionData[anomaly]}
-              selected={anomaly === value}
+        <div class="deficiency-values overlay__content">
+          {anomalies.map(deficiency => (
+            <DeficiencyOption
+              value={deficiency}
+              deficiency={colorVisionData[deficiency]}
+              selected={deficiency === value}
               onChange={e => {
-                onChange(anomaly);
+                onChange(deficiency);
                 toggle();
               }}
             />

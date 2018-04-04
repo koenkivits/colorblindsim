@@ -3,7 +3,7 @@ import devtools from "unistore/devtools";
 
 const initialState = {
   daltonizer: {
-    anomaly: "deuteranopia",
+    deficiency: "deuteranopia",
     disabled: false,
   },
   webcam: {},
