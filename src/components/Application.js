@@ -4,6 +4,8 @@ import LameRouter from "./LameRouter";
 import Introduction from "./Introduction";
 import Simulator from "../containers/Simulator";
 
+import "./Application.scss";
+
 class Application extends Component {
   render() {
     return (

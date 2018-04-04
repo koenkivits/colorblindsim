@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 
-import "./FacingModeToggle.css";
+import "./FacingModeToggle.scss";
 import RefreshCw from "preact-feather/dist/icons/refresh-cw";
 
 export default class FacingModeToggle extends Component {

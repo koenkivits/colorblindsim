@@ -3,6 +3,7 @@ import ArrowDown from "preact-feather/dist/icons/arrow-down";
 import Info from "preact-feather/dist/icons/info";
 
 import "./AppInfo.scss";
+import "../style/overlays.scss";
 import logoUrl from "../img/logo.svg";
 
 export default class AppInfo extends Component {
