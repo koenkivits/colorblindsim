@@ -11,6 +11,13 @@ class Introduction extends Component {
     const showError = shouldShowCompatibility && !isSupported();
     const showGetStarted = shouldShowCompatibility && isSupported();
 
+    // iOS 11 supports getUserMedia, but not in webviews :/
+    // https://stackoverflow.com/a/9039885
+    const isIOS =
+      !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    const hasServiceWorker = !!navigator.serviceWorker;
+    const inIOSWebview = showError && isIOS && hasServiceWorker;
+
     return (
       <section {...props}>
         <h1>
@@ -30,13 +37,21 @@ class Introduction extends Component {
             browser with JavaScript enabled.
           </p>
         </noscript>
-        {showError && (
-          <p>
-            Unfortunately, your browser does not support this app. ColorBlindSim
-            has been tested to work the most recent versions of Chrome, Firefox,
-            Safari and Edge.
-          </p>
-        )}
+        {showError &&
+          (inIOSWebview ? (
+            <p>
+              Unfortunately iOS currently does not support this app outside of
+              Safari. This means ColorBlindSim will not work in in-app webpages,
+              alternative browsers like Chrome, and pages that have been added
+              to the homescreen. You can still open ColorBlindSim in Safari.
+            </p>
+          ) : (
+            <p>
+              Unfortunately, your browser does not support this app. You can
+              still try another one though! ColorBlindSim has been tested to
+              work the most recent versions of Chrome, Firefox, Safari and Edge.
+            </p>
+          ))}
         {showGetStarted && (
           <div>
             <a class="get-started" href="#app">
