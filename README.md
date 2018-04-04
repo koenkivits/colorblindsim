@@ -12,7 +12,7 @@ ColorBlindSim requires a fairly recent browser to work. It has been tested to wo
 
 If you find any bugs please [file an issue](https://github.com/koenkivits/colorblindsim/issues/new).
 
-![](.assets/img/demo-xsmall.gif)
+![](./assets/img/demo-xsmall.gif)
 
 ## Build it yourself
 
