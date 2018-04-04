@@ -43,7 +43,7 @@ export default class AppInfo extends Component {
             <a href="https://koen.kivits.com" rel="noopener">
               Koen Kivits
             </a>. You can find me on{" "}
-            <a href="https://twitter.com/koenkivits">Twitter</a> or{" "}
+            <a href="https://twitter.com/koenkivits">Twitter</a> and{" "}
             <a href="https://github.com/koenkivits">Github</a>. Please don't
             hesitate to contact me if you find any issues.
           </p>
