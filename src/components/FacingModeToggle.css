@@ -5,6 +5,6 @@
   transition: transform 0.3s ease-out;
 }
 
-.facing-mode-toggle-user {
+.facing-mode-toggle--reversed {
   transform: rotate(180deg);
 }

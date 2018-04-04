@@ -246,10 +246,7 @@ class Simulator extends Component {
               onClick={toggleDisabled}
             />
             {cameras.frontBackSupport && (
-              <FacingModeToggle
-                facingMode={facingMode}
-                toggleFacingMode={toggleFacingMode}
-              />
+              <FacingModeToggle toggleFacingMode={toggleFacingMode} />
             )}
           </MainMenu>
         </div>
