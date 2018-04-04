@@ -4,7 +4,6 @@ html {
 
 body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-color: #fff;
 
   /* System Fonts as used by Medium and WordPress */
   /* https://css-tricks.com/snippets/css/system-font-stack/ */
@@ -20,6 +19,7 @@ body {
   --menu-item-highlight: #e4f0f5;
   --overlay-background: #587498;
 
+  background-color: #587498; // make sure text is readable if CSS variables aren't supported
   background-color: var(--main-background);
 
   min-height: 100%;
@@ -29,6 +29,7 @@ body {
 }
 
 a, a:active, a:focus {
+  color: #fff; // make sure text is readable if CSS variables aren't supported
   color: var(--main-color);
 }
 

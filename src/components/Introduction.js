@@ -1,52 +1,15 @@
 import { h, Component } from "preact";
 import VideoIcon from "preact-feather/dist/icons/video";
 
-import { isSupported, BROWSER_UNSUPPORTED, NO_CAMERA } from "../support";
+import isSupported from "../isSupported";
 import logoUrl from "../img/logo.svg";
 
 class Introduction extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      hasSupport: false,
-      noSupportReason: null,
-      supportChecked: false,
-    };
-  }
-
-  componentDidMount() {
-    isSupported()
-      .then(() => this.setState({ hasSupport: true, supportChecked: true }))
-      .catch(reason =>
-        this.setState({ noSupportReason: reason, supportChecked: true }),
-      );
-  }
-
-  renderSupportMessage() {
-    const { noSupportReason } = this.state;
-    let message;
-
-    switch (noSupportReason) {
-      case BROWSER_UNSUPPORTED:
-        message =
-          "Unfortunately, your browser does not support this app. ColorBlindSim has been tested to work the most recent versions of Chrome, Firefox, Safari and Edge.";
-        break;
-      /*case NO_CAMERA:
-        message =
-          "No cameras have been found for this device. Please connect a webcam or open this app on a device with cameras (like most smartphones)";
-        break;*/
-    }
-
-    if (message) {
-      return <p>{message}</p>;
-    }
-
-    return null;
-  }
-
   render(props, { hasSupport, noSupportReason, supportChecked }) {
     const shouldShowCompatibility = !window.inPrerender;
+
+    const showError = shouldShowCompatibility && !isSupported();
+    const showGetStarted = shouldShowCompatibility && isSupported();
 
     return (
       <section {...props}>
@@ -67,21 +30,25 @@ class Introduction extends Component {
             browser with JavaScript enabled.
           </p>
         </noscript>
-        {shouldShowCompatibility && this.renderSupportMessage()}
-        {shouldShowCompatibility &&
-          supportChecked &&
-          hasSupport && (
-            <div>
-              <a class="get-started" href="#app">
-                Get started <VideoIcon class="get-started__icon" size={24} />
-              </a>
-              <p>
-                <small>
-                  ColorBlindSim will ask for your permission to use your camera.
-                </small>
-              </p>
-            </div>
-          )}
+        {showError && (
+          <p>
+            Unfortunately, your browser does not support this app. ColorBlindSim
+            has been tested to work the most recent versions of Chrome, Firefox,
+            Safari and Edge.
+          </p>
+        )}
+        {showGetStarted && (
+          <div>
+            <a class="get-started" href="#app">
+              Get started <VideoIcon class="get-started__icon" size={24} />
+            </a>
+            <p>
+              <small>
+                ColorBlindSim will ask for your permission to use your camera.
+              </small>
+            </p>
+          </div>
+        )}
         <p>
           <small>
             ©{" "}

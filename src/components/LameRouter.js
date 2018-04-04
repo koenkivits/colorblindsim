@@ -22,6 +22,11 @@ export default class LameRouter extends Component {
   }
 
   render({ children }, { hash }) {
+    if (!children.find) {
+      // ugly fallback for older browsers -- TODO, should clean up
+      return null;
+    }
+
     return children.find(
       child => child.attributes.id === window.location.hash.substr(1),
     );
