@@ -29,7 +29,8 @@ class Introduction extends Component {
 
     switch (noSupportReason) {
       case BROWSER_UNSUPPORTED:
-        message = "Unfortunately, your browser does not support this app.";
+        message =
+          "Unfortunately, your browser does not support this app. ColorBlindSim has been tested to work the most recent versions of Chrome, Firefox, Safari and Edge.";
         break;
       /*case NO_CAMERA:
         message =
@@ -74,8 +75,21 @@ class Introduction extends Component {
               <a class="get-started" href="#app">
                 Get started <VideoIcon class="get-started__icon" size={24} />
               </a>
+              <p>
+                <small>
+                  ColorBlindSim will ask for your permission to use your camera.
+                </small>
+              </p>
             </div>
           )}
+        <p>
+          <small>
+            ©{" "}
+            <a rel="noopener" href="https://koen.kivits.com">
+              Koen Kivits
+            </a>
+          </small>
+        </p>
       </section>
     );
   }
