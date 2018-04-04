@@ -1,6 +1,6 @@
 # ![ColorBlindSim](./assets/img/readme_logo.png)
 
-Color blindness affects approximately 1 in 20 people of the world population. ColorBlindSim lets you experience the world as they do, right from your browser. [Check it out!](https://www.colorblindsim.com)
+ColorBlindSim is a progressive web application that lets you simulate color blindness. [Check it out!](https://www.colorblindsim.com)
 
 ColorBlindSim requires a fairly recent browser to work. It has been tested to work in the most recent versions of:
 
