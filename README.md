@@ -32,7 +32,7 @@ npm run watch
 
 ## Tools used
 
-ColorBlindSim is built using the following JavaScript tools:
+ColorBlindSim is built using the following tools:
 
 * [Preact](https://preactjs.com/) for rendering
 * [Unistore](https://github.com/developit/unistore) for state management
@@ -48,6 +48,10 @@ Some configuration can be found in the [config](./config) directory, but some co
 * `.editorconfig`: configuration for text editors and IDEs, [EditorConfig](http://editorconfig.org/) standard
 * `.nvmrc`: used by [nvm](https://github.com/creationix/nvm) to determine which Node.js version to use
 * `.prettierrc`: configuration for [prettier](https://prettier.io/), the automatic code formatter being used for this project
+
+## Credits
+
+The color conversion code is based on [skratchdot/color-blind](https://github.com/skratchdot/color-blind), which itself is based on [code by mudcu.be](https://galactic.ink/sphere/js/Color.Blind.js).
 
 ## License
 
