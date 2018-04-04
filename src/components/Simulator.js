@@ -49,7 +49,10 @@ class Simulator extends Component {
       return;
     }
 
-    if (cameras.length === 1) {
+    const hasOnlyOneCamera = cameras.length === 1;
+    const hasOlderSpec = typeof MediaTrackSettings === "undefined";
+
+    if (hasOnlyOneCamera || hasOlderSpec) {
       this.props.setCameraConstraints({
         deviceId: {
           exact: cameras[0].id,
@@ -63,9 +66,36 @@ class Simulator extends Component {
         },
       });
       this.props.setFacingMode("environment"); // try environment cam first
-      this.props.setFrontBackSupport(true);
     }
+
+    this.props.setFrontBackSupport(!hasOnlyOneCamera);
   }
+
+  onCameraInit = stream => {
+    let facingMode;
+
+    const track = stream.getVideoTracks()[0];
+    if (track.getSettings) {
+      const settings = track.getSettings();
+
+      // assume user facing if no facingMode can be detected
+      // (this is usually the case for regular webcams)
+      facingMode = settings.facingMode || "user";
+    } else {
+      // older browsers don't support fetching camera settings, fall back to basic label check
+      if (track.label.toLowerCase().indexOf("front") > -1) {
+        facingMode = "user";
+      } else {
+        facingMode = "environment";
+      }
+    }
+
+    this.setState({
+      fetchingCamera: false,
+      hasPermission: true,
+      facingMode,
+    });
+  };
 
   onCameraError = err => {
     if (
@@ -204,13 +234,7 @@ class Simulator extends Component {
                 onRequest={() => {
                   this.setState({ fetchingCamera: true });
                 }}
-                onInit={() => {
-                  this.setState({
-                    fetchingCamera: false,
-                    hasPermission: true,
-                    facingMode: webcam.facingMode,
-                  });
-                }}
+                onInit={this.onCameraInit}
                 onError={this.onCameraError}
               />
             </Daltonize>

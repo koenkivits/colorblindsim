@@ -28,13 +28,35 @@ export const setFacingMode = ({ webcam, ...other }, facingMode) => ({
 });
 
 export const toggleFacingMode = state => {
-  const newMode = state.webcam.facingMode === "user" ? "environment" : "user";
-  let result = setFacingMode(state, newMode);
-  return setCameraConstraints(result, {
-    facingMode: {
-      exact: newMode,
-    },
-  });
+  const constraints = state.webcam.constraints;
+  let newConstraints;
+
+  if (constraints.facingMode) {
+    // newer browsers can toggle between facing modes
+    const newMode =
+      constraints.facingMode.exact === "user" ? "environment" : "user";
+    newConstraints = {
+      facingMode: {
+        exact: newMode,
+      },
+    };
+  } else {
+    // older browsers cycle through device IDs
+    // this has the downside that I can't set an initial facing mode -- it'll just be the first camera
+    const currentId = constraints.deviceId.exact;
+    const currentIndex = state.cameras.list
+      .map(camera => camera.id)
+      .indexOf(currentId);
+    const nextIndex = (currentIndex + 1) % state.cameras.list.length;
+    const nextId = state.cameras.list[nextIndex].id;
+    newConstraints = {
+      deviceId: {
+        exact: nextId,
+      },
+    };
+  }
+
+  return setCameraConstraints(state, newConstraints);
 };
 
 export const setCameraConstraints = ({ webcam, ...other }, constraints) => ({
