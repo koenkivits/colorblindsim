@@ -1,4 +1,4 @@
-# ColorBlindSim
+# ![ColorBlindSim](./assets/img/readme_logo.png)
 
 Color blindness affects approximately 1 in 20 people of the world population. ColorBlindSim lets you experience the world as they do, right from your browser. [Check it out!](https://www.colorblindsim.com)
 
