@@ -50,7 +50,7 @@ class Simulator extends Component {
     }
 
     const hasOnlyOneCamera = cameras.length === 1;
-    const hasOlderSpec = typeof MediaTrackSettings === "undefined";
+    const hasOlderSpec = !("getSettings" in MediaStreamTrack.prototype);
 
     if (hasOnlyOneCamera || hasOlderSpec) {
       this.props.setCameraConstraints({
