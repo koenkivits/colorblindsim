@@ -15,8 +15,14 @@ class Introduction extends Component {
     // https://stackoverflow.com/a/9039885
     const isIOS =
       !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-    const hasServiceWorker = !!navigator.serviceWorker;
-    const inIOSWebview = showError && isIOS && hasServiceWorker;
+    let inIOSWebview = false;
+    if (showError && isIOS) {
+      const versionRe = /CPU .*? OS (\d+)/;
+      const matches = versionRe.exec(navigator.userAgent);
+      if (matches[1]) {
+        inIOSWebview = Number(matches[1]) >= 11;
+      }
+    }
 
     return (
       <section {...props}>
