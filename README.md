@@ -7,6 +7,8 @@ ColorBlindSim requires a fairly recent browser to work. It has been tested to wo
 * Chrome (desktop and mobile)
 * Firefox (desktop and mobile)
 * Safari (desktop and mobile)
+* Edge (desktop)
+* Samsung Internet (mobile)
 
 If you find any bugs please [file an issue](https://github.com/koenkivits/colorblindsim/issues/new).
 
