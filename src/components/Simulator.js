@@ -74,12 +74,19 @@ class Simulator extends Component {
     let facingMode;
 
     const track = stream.getVideoTracks()[0];
-    if (track.getSettings) {
+    if (track.getSettings && track.getConstraints) {
       const settings = track.getSettings();
+      const constraints = track.getConstraints();
 
-      // assume user facing if no facingMode can be detected
-      // (this is usually the case for regular webcams)
-      facingMode = settings.facingMode || "user";
+      const constraintFacingMode =
+        constraints && constraints.facingMode && constraints.facingMode.exact;
+
+      // Detect facing mode in the following order:
+      // - from video track settings (the proper way)
+      // - if above unavailable (like in Firefox, it seems): from constraints (we always go
+      //    for exact constraints, so this *should* always be the correct facing mode)
+      // - assume 'user' if unknown (usually the case with regular webcams)
+      facingMode = settings.facingMode || constraintFacingMode || "user";
     } else {
       // older browsers don't support fetching camera settings, fall back to basic label check
       if (track.label.toLowerCase().indexOf("front") > -1) {
