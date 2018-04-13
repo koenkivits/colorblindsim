@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 
-import Daltonizer from "../../lib/daltonize/Daltonizer";
+import Daltonizer from "../daltonize/Daltonizer";
 import "./Daltonize.scss";
 
 export default class Daltonize extends Component {

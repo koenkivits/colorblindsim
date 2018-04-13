@@ -2,7 +2,7 @@ import { h, Component } from "preact";
 import Menu from "preact-feather/dist/icons/menu";
 import ArrowDown from "preact-feather/dist/icons/arrow-down";
 
-import colorVisionData from "../../lib/daltonize/deficiencies";
+import colorVisionData from "../daltonize/deficiencies";
 import "./DeficiencySelector.scss";
 import "../style/overlays.scss";
 

@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-import colorVisionData from "../../lib/daltonize/deficiencies";
+import colorVisionData from "../daltonize/deficiencies";
 
 const Deficiency = ({ deficiency, ...otherProps }) => (
   <div {...otherProps}>
