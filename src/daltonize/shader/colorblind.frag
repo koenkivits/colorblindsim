@@ -49,6 +49,16 @@ vec3 applyAchroma(vec3 rgb) {
   return vec3(z, z, z);
 }
 
+vec3 applyGammaCorrection(vec3 rgb) {
+  // apply gamma and clamp simulated color...
+  float gammaCorrection = 2.2; // TODO make param
+  return vec3(
+    pow(rgb.r, 1.0 / gammaCorrection),
+    pow(rgb.g, 1.0 / gammaCorrection),
+    pow(rgb.b, 1.0 / gammaCorrection)
+  );
+}
+
 vec3 applyBlinder(vec3 rgb) {
   vec3 c = convertXyzToXyY(convertRgbToXyz(rgb)); // (x, y, Y)
 
@@ -98,13 +108,7 @@ vec3 applyBlinder(vec3 rgb) {
   // shift proportionally...
   z = z + adjust * d;
 
-  // apply gamma and clamp simulated color...
-  float gammaCorrection = 2.2; // TODO make param
-  z.r = pow(clamp(z.r, 0.0, 1.0), 1.0 / gammaCorrection);
-  z.g = pow(clamp(z.g, 0.0, 1.0), 1.0 / gammaCorrection);
-  z.b = pow(clamp(z.b, 0.0, 1.0), 1.0 / gammaCorrection);
-
-  return z;
+  return applyGammaCorrection(z);
 }
 
 void main() {
