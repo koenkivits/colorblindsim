@@ -2,7 +2,7 @@ import { h, Component } from "preact";
 import Menu from "preact-feather/dist/icons/menu";
 import ArrowDown from "preact-feather/dist/icons/arrow-down";
 
-import colorVisionData from "../../lib/daltonize/anomalies";
+import colorVisionData from "../../lib/daltonize/deficiencies";
 import "./DeficiencySelector.scss";
 import "../style/overlays.scss";
 
@@ -54,7 +54,7 @@ export default class DeficiencySelector extends Component {
   };
 
   render({ value, active, toggle, onChange }, { isOverlay, expanded }) {
-    const anomalies = Object.keys(colorVisionData);
+    const deficiencies = Object.keys(colorVisionData);
 
     const toggleLabel = active ? "Close menu" : "Open menu";
 
@@ -80,7 +80,7 @@ export default class DeficiencySelector extends Component {
           </span>
         </button>
         <div class="deficiency-values overlay__content">
-          {anomalies.map(deficiency => (
+          {deficiencies.map(deficiency => (
             <DeficiencyOption
               value={deficiency}
               deficiency={colorVisionData[deficiency]}
