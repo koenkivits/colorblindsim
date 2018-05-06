@@ -51,11 +51,17 @@ export default class Daltonize extends Component {
     this.props.onBind(original);
   }
 
-  render({ deficiency, children, ...otherProps }) {
+  render({ deficiency, disabled, children, ...otherProps }) {
     const original = children[0];
 
+    let style = {};
+    if (deficiency === "achromatopsia" && !disabled) {
+      // simulate blurry sight for achromatopsia
+      style.filter = "blur(2px)";
+    }
+
     return (
-      <div {...otherProps}>
+      <div style={style} {...otherProps}>
         <canvas
           {...original.attributes}
           ref={canvas => this.initCanvas(canvas)}

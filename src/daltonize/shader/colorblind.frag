@@ -44,11 +44,6 @@ vec3 anomalize(vec3 z, vec3 rgb) {
   return (v * z + rgb) / n;
 }
 
-vec3 applyAchroma(vec3 rgb) {
-  float z = rgb.r * 0.212656 + rgb.g * 0.715158 + rgb.b * 0.072186;
-  return vec3(z, z, z);
-}
-
 vec3 applyGammaCorrection(vec3 rgb) {
   // apply gamma and clamp simulated color...
   float gammaCorrection = 2.2; // TODO make param
@@ -57,6 +52,18 @@ vec3 applyGammaCorrection(vec3 rgb) {
     pow(rgb.g, 1.0 / gammaCorrection),
     pow(rgb.b, 1.0 / gammaCorrection)
   );
+}
+
+vec3 applyAchroma(vec3 rgb) {
+  float z = rgb.r * 0.212656 + rgb.g * 0.715158 + rgb.b * 0.072186;
+
+  if (!u_anomalize) {
+    // overexpose to simulate high light sensitivity to achromatopsia
+    float exposure = 2.0; // make param?
+    z *= exposure;
+  }
+
+  return vec3(z, z, z);
 }
 
 vec3 applyBlinder(vec3 rgb) {
