@@ -17,6 +17,10 @@ export default class AppInfo extends Component {
 
   render({ active, toggle }) {
     const toggleLabel = active ? "Close info" : "Open info";
+    const twitterText = "@koenkivits ";
+    const twitterIntent =
+      "https://twitter.com/intent/tweet?text=" +
+      encodeURIComponent(twitterText);
 
     return (
       <div
@@ -39,13 +43,24 @@ export default class AppInfo extends Component {
           </p>
           <h2>ColorBlindSim</h2>
           <p>
-            Made with care by{" "}
+            Made by{" "}
             <a href="https://koen.kivits.com" rel="noopener">
               Koen Kivits
             </a>. You can find me on{" "}
             <a href="https://twitter.com/koenkivits">Twitter</a> and{" "}
-            <a href="https://github.com/koenkivits">Github</a>. Please don't
-            hesitate to contact me if you find any issues.
+            <a href="https://github.com/koenkivits">Github</a>.{" "}
+            <a href="mailto:koen@kivits.com" rel="noopener">
+              Mail me
+            </a>{" "}
+            or{" "}
+            <a href={twitterIntent} rel="noopener">
+              tweet me
+            </a>{" "}
+            if you have any questions or issues.
+          </p>
+          <p>
+            Special thanks to Roel Nieskens and Roel van Gils for helping me
+            improve this app with their feedback and advice.
           </p>
           <p>
             This application is open source. You can find the source on{" "}
