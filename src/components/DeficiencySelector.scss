@@ -12,14 +12,14 @@
   flex-grow: 1;
 
   cursor: pointer;
-  color: var(--menu-text-color);
   background-color: var(--menu-item-background);
 
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-.deficiency-values label {
+.deficiency-value {
+  text-decoration: none;
   background-color: var(--menu-item-background);
   display: block;
   padding: 0.5em;
@@ -32,7 +32,13 @@
   transition: transform ease-out 0.2s;
 }
 
-.deficiency-values small {
+.deficiency-value,
+.deficiency-value:active,
+.deficiency-value:focus {
+  color: var(--menu-text-color);
+}
+
+.deficiency-value small {
   display: block;
   font-size: 70%;
   color: var(--secondary-text-color);

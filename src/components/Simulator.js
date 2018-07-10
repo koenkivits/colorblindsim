@@ -51,6 +51,11 @@ class Simulator extends Component {
 
     if (nextProps.deficiency !== this.props.deficiency) {
       this.props.setDeficiency(nextProps.deficiency);
+      this.props.setDisabled(false);
+
+      if (this.props.overlay === "selector") {
+        this.props.toggleOverlay("selector");
+      }
     }
   }
 
@@ -239,10 +244,6 @@ class Simulator extends Component {
           active={overlay === "selector"}
           value={daltonizer.deficiency}
           toggle={() => toggleOverlay("selector")}
-          onChange={deficiency => {
-            setDisabled(false);
-            setDeficiency(deficiency);
-          }}
         />
         <AppInfo
           active={overlay === "info"}

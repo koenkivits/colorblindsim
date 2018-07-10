@@ -6,18 +6,14 @@ import colorVisionData from "../daltonize/deficiencies";
 import "./DeficiencySelector.scss";
 import "../style/overlays.scss";
 
-const DeficiencyOption = ({ value, deficiency, selected, onChange }) => (
-  <label class={selected ? "deficiency-value--selected" : ""}>
-    <input
-      type="radio"
-      name="deficiency"
-      checked={selected}
-      value={value}
-      onChange={onChange}
-    />
+const DeficiencyOption = ({ value, deficiency, selected }) => (
+  <a
+    href={`#app/${value}`}
+    class={"deficiency-value " + (selected ? "deficiency-value--selected" : "")}
+  >
     {deficiency.name}
     <small>{deficiency.description}</small>
-  </label>
+  </a>
 );
 
 export default class DeficiencySelector extends Component {
@@ -53,7 +49,7 @@ export default class DeficiencySelector extends Component {
     }
   };
 
-  render({ value, active, toggle, onChange }, { isOverlay, expanded }) {
+  render({ value, active, toggle }, { isOverlay, expanded }) {
     const deficiencies = Object.keys(colorVisionData);
 
     const toggleLabel = active ? "Close menu" : "Open menu";
@@ -85,10 +81,6 @@ export default class DeficiencySelector extends Component {
               value={deficiency}
               deficiency={colorVisionData[deficiency]}
               selected={deficiency === value}
-              onChange={e => {
-                onChange(deficiency);
-                toggle();
-              }}
             />
           ))}
         </div>
