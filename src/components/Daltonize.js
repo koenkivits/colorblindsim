@@ -51,19 +51,30 @@ export default class Daltonize extends Component {
     this.props.onBind(original);
   }
 
-  render({ deficiency, disabled, children, ...otherProps }) {
+  render({ deficiency, disabled, mirrored, children, ...otherProps }) {
     const original = children[0];
 
-    let style = {};
+    let style = { transform: "" };
+    let canvasStyle = {};
     if (deficiency === "achromatopsia" && !disabled) {
       // simulate blurry sight for achromatopsia
       style.filter = "blur(2px)";
+
+      // scale down canvas, then blur, then scale back up for (hopefully) better performance
+      // (this is an experiment)
+      canvasStyle.transform = "scale(.7)";
+      style.transform = "scale(1.43)";
+    }
+
+    if (mirrored) {
+      style.transform += " scaleX(-1)";
     }
 
     return (
       <div style={style} {...otherProps}>
         <canvas
           {...original.attributes}
+          style={canvasStyle}
           ref={canvas => this.initCanvas(canvas)}
         />
         <div class="daltonize-container" ref={div => this.initOriginal(div)}>

@@ -212,9 +212,6 @@ class Simulator extends Component {
     }
 
     let daltonizerClass = "daltonize";
-    if (facingMode === "user") {
-      daltonizerClass += " daltonize--mirror";
-    }
     if (letterbox) {
       daltonizerClass += " daltonize--letterbox";
     }
@@ -235,6 +232,9 @@ class Simulator extends Component {
       });
     };
 
+    // flip camera if facing user, to simulate a mirror-like effect
+    const mirrored = facingMode === "user";
+
     return (
       <div
         {...otherProps}
@@ -251,7 +251,11 @@ class Simulator extends Component {
         />
         <div class={wrapperClass}>
           {!error && (
-            <Daltonize class={daltonizerClass} onBind={onBind}>
+            <Daltonize
+              class={daltonizerClass}
+              mirrored={mirrored}
+              onBind={onBind}
+            >
               <Webcam
                 class="daltonize__content"
                 constraints={webcam.constraints}
