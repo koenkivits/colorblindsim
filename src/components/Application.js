@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 
-import LameRouter from "./LameRouter";
+import { Router, Route } from "./Router";
 import Introduction from "./Introduction";
 import Simulator from "../containers/Simulator";
 
@@ -11,9 +11,9 @@ class Application extends Component {
     return (
       <main>
         <Introduction id="splash" />
-        <LameRouter>
-          <Simulator id="app" />
-        </LameRouter>
+        <Router>
+          <Route component={Simulator} id="app" field="deficiency" />
+        </Router>
       </main>
     );
   }
