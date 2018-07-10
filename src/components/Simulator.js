@@ -26,6 +26,12 @@ class Simulator extends Component {
   }
 
   componentDidMount() {
+    const { setDeficiency, deficiency } = this.props;
+
+    if (deficiency) {
+      setDeficiency(deficiency);
+    }
+
     window.navigator.mediaDevices
       .enumerateDevices()
       .then(devices => devices.filter(device => device.kind === "videoinput"))
@@ -41,6 +47,10 @@ class Simulator extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.cameras.list !== this.props.cameras.list) {
       this.initCameras(nextProps.cameras.list);
+    }
+
+    if (nextProps.deficiency !== this.props.deficiency) {
+      this.props.setDeficiency(nextProps.deficiency);
     }
   }
 
