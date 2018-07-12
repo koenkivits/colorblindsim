@@ -59,7 +59,7 @@ vec3 applyAchroma(vec3 rgb) {
 
   if (!u_anomalize) {
     // overexpose to simulate high light sensitivity to achromatopsia
-    float exposure = 2.0; // make param?
+    float exposure = z * pow(1.4, 1.0 + z); // make param?
     z *= exposure;
   }
 

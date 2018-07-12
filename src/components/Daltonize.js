@@ -6,7 +6,7 @@ import "./Daltonize.scss";
 export default class Daltonize extends Component {
   componentDidMount() {
     const render = () => {
-      this.daltonizer.render(this.props.deficiency, !this.props.disabled);
+      this.renderFrame();
       requestAnimationFrame(render);
     };
 
@@ -15,6 +15,43 @@ export default class Daltonize extends Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.children[0] !== this.props.children[0];
+  }
+
+  renderFrame() {
+    this.daltonizer.render(this.props.deficiency, !this.props.disabled);
+    this.renderBlur();
+  }
+
+  renderBlur() {
+    const canvas = this.daltonizer.canvas;
+    const context = canvas.getContext("webgl");
+    const pixelCount = context.drawingBufferWidth * context.drawingBufferHeight;
+    const pixels = new Uint8Array(pixelCount * 4);
+
+    let blur = 0;
+
+    if (context && !this.props.disabled) {
+      context.readPixels(
+        0,
+        0,
+        context.drawingBufferWidth,
+        context.drawingBufferHeight,
+        context.RGBA,
+        context.UNSIGNED_BYTE,
+        pixels,
+      );
+      const sampleCount = 100;
+
+      let sum = 0;
+      for (let i = sampleCount; i; i--) {
+        sum += pixels[Math.floor(Math.random() * pixelCount) * 4];
+      }
+
+      const lightLevel = sum / sampleCount / 0xff;
+      blur = 1 + lightLevel * 1.5;
+    }
+
+    canvas.style.filter = `blur(${blur}px)`;
   }
 
   initCanvas(canvas) {
@@ -57,13 +94,11 @@ export default class Daltonize extends Component {
     let style = { transform: "" };
     let canvasStyle = {};
     if (deficiency === "achromatopsia" && !disabled) {
-      // simulate blurry sight for achromatopsia
-      style.filter = "blur(2px)";
-
       // scale down canvas, then blur, then scale back up for (hopefully) better performance
       // (this is an experiment)
-      canvasStyle.transform = "scale(.7)";
-      style.transform = "scale(1.43)";
+      const scaleFactor = 1;
+      canvasStyle.transform = `scale(${scaleFactor})`;
+      style.transform = `scale(${1 / scaleFactor})`;
     }
 
     if (mirrored) {
