@@ -20,6 +20,7 @@
 
 .daltonize {
   height: 100%;
+  pointer-events: none;
 
   transition: opacity .2s ease-out;
 }
