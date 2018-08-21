@@ -51,7 +51,7 @@ export default class Daltonize extends Component {
     this.props.onBind(original);
   }
 
-  render({ deficiency, disabled, mirrored, children, ...otherProps }) {
+  render({ deficiency, disabled, mirrored, children, store, ...otherProps }) {
     const original = children[0];
 
     let style = { transform: "" };
