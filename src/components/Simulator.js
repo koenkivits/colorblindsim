@@ -18,7 +18,7 @@ class Simulator extends Component {
     super(props);
 
     this.state = {
-      fetchingCamera: false,
+      fetchingCamera: true,
       hasPermission: false,
       facingMode: null,
       error: null,
@@ -33,7 +33,11 @@ class Simulator extends Component {
     }
 
     window.navigator.mediaDevices
-      .enumerateDevices()
+      // call .getUserMedia() to make sure we have camera access before we call enumerateDevices()
+      // (otherwise iOS Safari won't return additional cameras)
+      .getUserMedia({ video: true })
+      .then(() => this.setState({ hasPermission: true }))
+      .then(() => window.navigator.mediaDevices.enumerateDevices())
       .then(devices => devices.filter(device => device.kind === "videoinput"))
       .then(devices =>
         devices.map(device => ({
@@ -41,7 +45,8 @@ class Simulator extends Component {
           label: device.label,
         })),
       )
-      .then(this.props.receiveCameras);
+      .then(this.props.receiveCameras)
+      .catch(this.onCameraError);
   }
 
   componentWillReceiveProps(nextProps) {
