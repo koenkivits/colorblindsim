@@ -23,7 +23,7 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "node-sass": "^4.8.3",
+    "node-sass": "^7.0.0",
     "preact": "^8.2.7",
     "preact-feather": "^2.0.1",
     "unistore": "^3.0.4"
